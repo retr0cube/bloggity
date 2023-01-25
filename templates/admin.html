@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{% block title%}{% endblock%}</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+	<link href="https://fonts.cdnfonts.com/css/product-sans" rel="stylesheet">
+	<link rel="stylesheet" href="{{url_for('static',filename='styles/main.css')}}">
+	<link rel="shortcut icon" href="{{url_for('static',filename='favicon.ico')}}">
+<!-- 	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap" rel="stylesheet"> -->
+</head>
+<body>
+	<header>
+		<a href="/" id="logo_link"><img src="{{ url_for('static', filename='bloggity.png') }}" alt="Bloggity logo"></a>
+		{% if request.path != "/admin"%}
+		<nav>
+			<ul>
+				<li id="l1"><a {% if request.path == "/articles" %} style="border-bottom: 3px solid hsl(216, 100%, 50%);" {% endif %} href="/dashboard">Tableau de bord</a></li>
+				<li><a {% if request.path == "/multimedia" %} style="border-bottom: 3px solid hsl(216, 100%, 50%);" {% endif %} href="/multimedia">Vos articles</a></li>
+			</ul>
+		</nav>
+		{% endif %}
+		<button onclick="toggleDark()" title="Basculer entre le mode sombre et le mode clair"><i id="dark-mode-ico" class="fa-solid fa-moon"></i></button>
+	</header>
+	{% block head %}{% endblock%}
+	<footer>
+		<a id="retcy_logo"href="https://github.com/retr0cube"><img src="{{ url_for('static', filename='text848-6.png')}}" alt="Retcy logo"></a>
+		<a href="/" id="info">Accueil</a>
+	</footer>
+</body>
+	<script src="{{ url_for('static', filename='main.js')}}"></script>
+</html>

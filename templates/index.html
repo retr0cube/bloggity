@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Bloggity - Blog Scolaire du Lycée Al Majd{% endblock%}
+
+{% block head %}
+<div id="container">
+<!-- 	<img src="{{ url_for('static', filename='bloggity.png') }}" alt="Bloggity logo">	
+ -->	<div id="edito">	
+		<h1>ÉDITO</h1>
+		<p>{{ edito }}<br><code>-L'équipe rédactrice</code></p>
+	</div>
+</div>
+<div id="genres">
+	<h1 id="title"><i class="fa-regular fa-newspaper"></i>Explorez notre contenu par genre</h1>
+	{% if genre %}
+	{% else %}
+		<div>
+			<h1>¯\_(ツ)_/¯</h1>
+			<p>Il n'y a pas de contenu pour le moment.</p>
+		</div>
+		{% endif %}
+</div>
+<div id="types">
+	<h1 id="title"><i class="fa-solid fa-radio"></i>Ou par type</h1>
+	{% if genre %}
+	{% else %}
+		<div>
+			<h1>¯\_(ツ)_/¯</h1>
+			<p>Il n'y a pas de contenu pour le moment.</p>
+		</div>
+		{% endif %}
+</div>
+{% endblock%}
