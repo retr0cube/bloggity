@@ -1,0 +1,217 @@
+
+$main-color: hsl(216, 100%, 50%)
+$main-color-2: hsl(233, 99%, 95%)
+$secondary-color: hsl(215, 15%, 16%)
+
+*
+	padding: 0
+	margin: 0
+	box-sizing: border-box
+	transition: ease .34s
+	user-select: none
+
+html
+	height: 100%
+body 
+	min-height: 100%
+	display: flex
+	flex-direction: column
+
+.dark-mode 
+	background-color: $secondary-color
+	color: white
+	header
+		img
+			content: url("../bloggity_dark.png")
+		nav ul li a
+			color: white
+			&:hover
+				color: $main-color
+		button
+			color: white
+			background-color: hsl(0, 0%, 20%)
+			&:hover
+				background-color: hsl(0, 0%, 30%)
+	footer
+		background: none
+	form div input
+		background-color: hsl(0, 0%, 20%)
+		color: white
+
+
+header 
+	display: flex
+	position: sticky
+	justify-content: flex-end
+	align-items: center
+	border-top: 5px solid $main-color
+	padding: 30px 50px
+	
+	#logo_link
+		margin-right: auto
+		img 
+			width: 8em
+
+	nav 
+		display: flex  
+		ul
+			font-family: 'PlayFair Display'
+			font-size: 1.1em
+			list-style-type: none
+			display: inherit
+			padding-right: 1.5em
+			#l1, #l2
+				padding-right: 2em
+			
+			border-right: 2px solid gray
+
+		a
+			text-decoration: none
+			color: black
+			border-bottom: 3px dotted $main-color
+			transition: ease .5s
+			&:hover
+				color: $main-color
+	button
+		cursor: pointer
+		border: none 
+		padding: 10px
+		border-radius: 24px
+		width: 38px
+		vertical-align: middle
+		margin-left: 1.5em
+		i
+			font-size: 1.4em
+		&:hover
+			background-color: hsl(0, 0%, 80%)
+
+footer 
+	display: flex
+	justify-content: flex-end
+	background-color: $secondary-color	
+	padding: 30px 50px 40px
+	flex:1
+	bottom: 0px
+	border-top: 1px solid dimgray
+	#info 
+		text-decoration: none
+		color: gray
+		text-decoration-line: underline
+		transition: ease .5s
+		&:hover
+			color: lightgray
+	#retcy_logo
+		margin-right: auto
+		img 
+			width: 12em
+
+/* index */
+
+#container
+	display: flex
+	flex-direction: row
+	padding: 0 50px
+	#edito 
+		padding: 30px
+		border-radius: 24px
+		h1
+			font-family: "PlayFair Display"
+			border-bottom: 3px dotted $main-color
+			display: inline-block
+		p
+			font-family: "Product Sans"
+			text-indent: 1em
+			font-size: 1.25em
+			padding: 15px 0
+			code
+				font-family: "PlayFair Display" 
+				float: right
+				font-style: italic
+#genres, #types
+	padding: 30px 50px
+	font-family: "Product Sans"
+	margin: 0px 50px
+	border-radius: 24px
+	border: .5px solid gray
+	#title
+		padding-bottom: 1em
+		i 
+			color: $main-color
+			padding-right: 20px
+	div	
+		display: flex
+		flex-direction: column
+		justify-content: center
+		align-items: center
+		font-size: 1.1em
+		h1
+			color: $main-color
+#types
+	margin: 25px 50px
+
+/* 404 */
+
+#oops 
+	height: 50vh
+	display: flex
+	align-items: center
+	flex-direction: column
+	justify-content: center
+	font-family: "Product Sans"
+	font-size: 1.4em
+	h1
+		font-family: "PlayFair Display"
+		font-size: 4em
+		letter-spacing: 15px
+		margin-bottom: 20px
+	a
+		text-decoration: none
+		border-bottom: 2px dotted $main-color
+		color: $main-color
+		font-size: .9em
+		margin-top: 10px
+		&:hover
+			border-bottom-style: solid
+
+/* login */
+
+
+form
+	display: flex
+	flex-direction: column
+	justify-content: center
+	align-items: center
+	margin-bottom: 20vh
+	h1     
+		font-family: "Product Sans"
+		color: $main-color
+		font-size: 2em
+	p 
+		font-family: "PlayFair Display"	
+		font-size: 1.3em
+	div 
+		margin: 1em 0
+		input
+			color: $secondary-color
+			border: none
+			font-family: "Fira Code", monospace
+			border-radius: 24px
+			padding: 10px
+			text-align: center 
+			background-color: hsl(0, 0%, 90%)
+			font-size: 3em
+			width: 1.5em
+		code
+			font-weight: bolder
+			font-size: 2em
+	button
+		padding: 5px 10px
+		font-family: "Product sans"
+		background-color: $main-color
+		border: none
+		color: white
+		font-size: 1.3em
+		border-radius: 24px
+		cursor: pointer
+		&:hover
+			background-color: hsl(216%, 100%, 60%)
