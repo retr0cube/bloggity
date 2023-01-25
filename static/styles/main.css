@@ -24,7 +24,7 @@ body {
   background-color: #23282f;
 }
 .dark-mode header img {
-  content: url("../bloggity_dark.png");
+  filter: brightness(0) invert(1);
 }
 .dark-mode header .toggled ul {
   background-color: #333333;
