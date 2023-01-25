@@ -17,13 +17,14 @@
 <body>
 	<header>
 		<a href="/" id="logo_link"><img src="{{ url_for('static', filename='bloggity.png') }}" alt="Bloggity logo"></a>
-		<nav>
+		<nav id="lists">
 			<ul>
 				<li id="l1"><a {% if request.path == "/articles" %} style="border-bottom: 3px solid hsl(216, 100%, 50%);" {% endif %} href="/articles">Articles</a></li>
 				<li id="l2" ><a {% if request.path == "/multimedia" %} style="border-bottom: 3px solid hsl(216, 100%, 50%);" {% endif %} href="/multimedia">Multimédia</a></li>
-				<li><a {% if request.path == "/contact" %} style="border-bottom: 3px solid hsl(216, 100%, 50%);" {% endif %} href="/contactez_nous">Contactez-nouz</a></li>
+				<li><a {% if request.path == "/contactez_nous" %} style="border-bottom: 3px solid hsl(216, 100%, 50%);" {% endif %} href="/contactez_nous">Contactez-nouz</a></li>
 			</ul>
 		</nav>
+		<button id="menuBtn" onclick="toggleMenu()" title="Menu"><i id="menu-ico" class="fa-solid fa-bars-staggered"></i></button>
 		<button onclick="toggleDark()" title="Basculer entre le mode sombre et le mode clair"><i id="dark-mode-ico" class="fa-solid fa-moon"></i></button>
 	</header>
 	{% block head %}{% endblock%}

@@ -19,6 +19,19 @@ function toggleDark() {
 }
 var element = document.body;
 	element.classList.toggle("dark-mode");
+}
+
+function toggleMenu() {
+	var ico = document.getElementById("menu-ico");
+	if (ico.className == 'fa-solid fa-bars-staggered') {
+    ico.classList.remove('fa-solid','fa-bars-staggered');
+    ico.classList.add('fa-solid',"fa-xmark");
+} else {
+    ico.classList.remove('fa-solid','fa-xmark');
+    ico.classList.add('fa-solid','fa-bars-staggered');
+}
+	var element = document.getElementById("lists");
+	element.classList.toggle("toggled");
 } 
 
 

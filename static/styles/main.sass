@@ -21,12 +21,17 @@ body
 	background-color: $secondary-color
 	color: white
 	header
+		background-color: $secondary-color
 		img
 			content: url("../bloggity_dark.png")
-		nav ul li a
-			color: white
-			&:hover
-				color: $main-color
+		.toggled
+			ul
+				background-color: hsl(0, 0%, 20%)
+		nav 
+			ul li a
+				color: white
+				&:hover
+					color: $main-color
 		button
 			color: white
 			background-color: hsl(0, 0%, 20%)
@@ -40,12 +45,14 @@ body
 
 
 header 
-	display: flex
 	position: sticky
+	top: 0px
+	display: flex
 	justify-content: flex-end
 	align-items: center
 	border-top: 5px solid $main-color
 	padding: 30px 50px
+	background-color: white
 	
 	#logo_link
 		margin-right: auto
@@ -59,7 +66,7 @@ header
 			font-size: 1.1em
 			list-style-type: none
 			display: inherit
-			padding-right: 1.5em
+			padding-right: 1.4em
 			#l1, #l2
 				padding-right: 2em
 			
@@ -72,6 +79,8 @@ header
 			transition: ease .5s
 			&:hover
 				color: $main-color
+	#menuBtn
+		display: none
 	button
 		cursor: pointer
 		border: none 
@@ -90,8 +99,7 @@ footer
 	justify-content: flex-end
 	background-color: $secondary-color	
 	padding: 30px 50px 40px
-	flex:1
-	bottom: 0px
+	flex: 1
 	border-top: 1px solid dimgray
 	#info 
 		text-decoration: none
@@ -181,6 +189,7 @@ form
 	flex-direction: column
 	justify-content: center
 	align-items: center
+	margin-top: 15vh
 	margin-bottom: 20vh
 	h1     
 		font-family: "Product Sans"
@@ -214,4 +223,48 @@ form
 		border-radius: 24px
 		cursor: pointer
 		&:hover
-			background-color: hsl(216%, 100%, 60%)
+			background-color: hsl(216, 100%, 60%)
+
+@media only screen and (max-width: 700px)
+	header
+		padding: 20px 30px
+		#logo_link img
+			content: url("../feather.png")
+			width: 1.5em
+		nav 
+			display: none
+		.toggled
+			display: initial
+			ul
+				background-color: hsl(0, 0%, 90%)
+				padding: 15px
+				border-radius: 24px
+				border: none
+				#l1, #l2
+					margin-bottom: 10px
+		#menuBtn
+			display: initial
+
+	#container
+		padding: 0 10px
+		#edito p
+				font-size: 1.2em
+
+	#genres, #types
+		padding: 20px
+		#title
+			font-size: 1.3em
+			padding-bottom: .5em
+			i 
+				padding-right: 10px
+		div p
+			font-size: 1em
+	#genres
+		margin: 0 30px
+	#types
+		margin: 20px 30px
+
+	form
+		margin-top: 20vh
+		div	input
+			width: 1em
