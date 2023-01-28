@@ -2,12 +2,11 @@ from flask import Flask, url_for, render_template, request, redirect, session, a
 from flask_sqlalchemy import SQLAlchemy
 from flask_admin import Admin, AdminIndexView, expose
 from flask_admin.contrib.sqla import ModelView
-import os
 
 app = Flask(__name__)
 
 app.config['FLASK_ADMIN_SWATCH'] = "cerulean"
-app.config['SECRET_KEY'] = os.urandom(24)
+app.config['SECRET_KEY'] = "retr0cube"
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///bloggity.db"
 
 db = SQLAlchemy()
@@ -47,7 +46,6 @@ class BloggityAV(AdminIndexView):
 class BloggityMV(ModelView):
     def is_accessible(self):
         if "logged_in" in session:
-
             return True
         else:
             abort(403)
