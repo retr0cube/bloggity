@@ -1,0 +1,8 @@
+# created by virtualenv automatically
+gen_db.py
+pyvenv.cfg
+__pycache__
+include
+Lib
+Scripts
+var

@@ -2,7 +2,10 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  transition: ease 0.34s;
+  -webkit-transition: all 0.2s 0s linear;
+  -moz-transition: all 0.2s 0s linear;
+  -o-transition: all 0.2s 0s linear;
+  transition: all 0.2s 0s linear;
   user-select: none;
 }
 
@@ -45,8 +48,11 @@ body {
 .dark-mode footer {
   background: none;
 }
-.dark-mode form div input {
+.dark-mode form input {
   background-color: #333333;
+  color: white;
+}
+.dark-mode #wrapper a {
   color: white;
 }
 
@@ -230,13 +236,12 @@ form h1 {
   font-size: 2em;
 }
 form p {
+  text-align: center;
   font-family: "PlayFair Display";
   font-size: 1.3em;
 }
-form div {
-  margin: 1em 0;
-}
-form div input {
+form input {
+  margin: 0.5em 0;
   color: #23282f;
   border: none;
   font-family: "Fira Code", monospace;
@@ -244,12 +249,8 @@ form div input {
   padding: 10px;
   text-align: center;
   background-color: #e6e6e6;
+  width: 4em;
   font-size: 3em;
-  width: 1.5em;
-}
-form div code {
-  font-weight: bolder;
-  font-size: 2em;
 }
 form button {
   padding: 5px 10px;
@@ -265,6 +266,129 @@ form button:hover {
   background-color: #3385ff;
 }
 
+#post_wrapper {
+  display: flex;
+  margin: 0em 6em 5em;
+  padding: 25px;
+  border-radius: 24px;
+  border: 0.5px solid gray;
+}
+#post_wrapper #img_title {
+  border: none;
+  margin-right: 1em;
+}
+#post_wrapper #img_title img {
+  border-radius: 12px;
+  width: 6.5em;
+}
+#post_wrapper #img_title img:hover {
+  filter: brightness(50%);
+}
+#post_wrapper a {
+  text-decoration: none;
+  color: black;
+  border-bottom: 7px dotted #0066ff;
+  font-family: "PlayFair Display";
+  font-size: 1.7em;
+}
+#post_wrapper a:hover {
+  color: #0066ff;
+}
+#post_wrapper h2 {
+  display: inline-flex;
+  font-size: 1.1em;
+  color: #0066ff;
+  font-family: "PlayFair Display";
+  font-style: italic;
+}
+#post_wrapper p {
+  margin-top: 1em;
+  font-family: "Product Sans";
+  font-size: 1.1em;
+}
+
+#wrapper {
+  display: flex;
+  margin: 0em 6em 5em;
+  padding: 25px;
+  border-radius: 24px;
+  border: 0.5px solid gray;
+}
+#wrapper #img_title {
+  border: none;
+  margin-right: 1em;
+}
+#wrapper #img_title img {
+  border-radius: 12px;
+  width: 6.5em;
+}
+#wrapper #img_title img:hover {
+  filter: brightness(50%);
+}
+#wrapper a {
+  text-decoration: none;
+  color: black;
+  border-bottom: 7px dotted #0066ff;
+  font-family: "PlayFair Display";
+  font-size: 1.7em;
+}
+#wrapper a:hover {
+  color: #0066ff;
+}
+#wrapper h2 {
+  display: inline-flex;
+  font-size: 1.1em;
+  color: #0066ff;
+  font-family: "PlayFair Display";
+  font-style: italic;
+}
+#wrapper p {
+  text-indent: 1em;
+  margin-top: 1em;
+  font-family: "Product Sans";
+  font-size: 1.1em;
+}
+
+#title-p {
+  font-family: "Product Sans";
+  margin-bottom: 1em;
+  color: #0066ff;
+}
+
+#title-c {
+  font-family: "Product Sans";
+  color: #0066ff;
+  margin-bottom: 1em;
+}
+
+#team {
+  border: 0.5px solid gray;
+  padding: 20px;
+  border-radius: 24px;
+  margin: 0 30vw 5vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+#team p, #team ul {
+  margin-bottom: 15px;
+  font-family: "Product Sans";
+  font-size: 1.1em;
+}
+#team h3 {
+  font-family: "PlayFair Display";
+  font-style: italic;
+  font-size: 1.5em;
+  margin-bottom: 15px;
+}
+#team ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 @media only screen and (max-width: 700px) {
   header {
     padding: 20px 30px;
@@ -274,19 +398,32 @@ form button:hover {
     width: 1.5em;
   }
   header nav {
-    display: none;
-  }
-  header .toggled {
-    display: initial;
-  }
-  header .toggled ul {
-    background-color: #e6e6e6;
-    padding: 15px;
-    border-radius: 24px;
+    position: fixed;
+    top: 103.817px;
+    opacity: 0;
+    width: 100vw;
+    pointer-events: none;
     border: none;
   }
-  header .toggled ul #l1, header .toggled ul #l2 {
-    margin-bottom: 10px;
+  header .toggled {
+    position: fixed;
+    pointer-events: auto;
+    top: 103.817px;
+    right: 0;
+    opacity: 1;
+  }
+  header .toggled ul {
+    display: flex;
+    justify-content: center;
+    background-color: #e6e6e6;
+    padding: 15px 0 25px 0;
+    margin: 0;
+    width: 100vw;
+    border: none;
+    transition: all ease-in-out 0.2s;
+  }
+  header .toggled ul a {
+    font-size: 0.9em;
   }
   header #menuBtn {
     display: initial;
@@ -321,11 +458,21 @@ form button:hover {
     margin: 20px 30px;
   }
 
+  #wrapper {
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 10vw 5em;
+  }
+  #wrapper h2 {
+    margin-top: 0.5em;
+  }
+
   form {
     margin-top: 20vh;
   }
-  form div input {
-    width: 1em;
+
+  #team {
+    margin: 0 10vw 5vh;
   }
 }
 

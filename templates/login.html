@@ -1,20 +1,33 @@
-{% extends "admin.html" %}
-
-{% block title %}Admin - Bloggity{% endblock%}
-
-{% block head %}
-<form>
-	<h1>Bienvenue!</h1>
-	<p>Pour se connecter insérer votre code spécial:</p>
-	<div>
-		<input placeholder="*" maxlength="1" >
-		<input placeholder="*" maxlength="1" >
-		<input placeholder="*" maxlength="1" >
-		<code>-</code>
-		<input placeholder="*" maxlength="1" >
-		<input placeholder="*" maxlength="1" >
-		<input placeholder="*" maxlength="1" >	
-	</div>
-	<button type="submit">Continuer</button>
-</form>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Admin - Bloggity</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+	<link href="https://fonts.cdnfonts.com/css/product-sans" rel="stylesheet">
+	<link rel="stylesheet" href="{{url_for('static',filename='styles/main.css')}}">
+	<link rel="shortcut icon" href="{{url_for('static',filename='favicon.ico')}}">
+</head>
+<body>
+	<header>
+		<a href="/" id="logo_link"><img src="{{ url_for('static', filename='bloggity.png') }}" alt="Bloggity logo"></a>
+		<button onclick="toggleDark()" title="Basculer entre le mode sombre et le mode clair"><i id="dark-mode-ico" class="fa-solid fa-moon"></i></button>
+	</header>
+	<form method="post" action="/login">
+		<h1>Bienvenue!</h1>
+		<p>Pour se connecter insérer votre code spécial:</p>
+		{% if failed%}
+		<h4 style="color: red;"><i class="fa-solid fa-circle-xmark"></i> Le code est incorrect!</h4>
+		{% endif %}
+		<input type="text" name="pass" placeholder="******" maxlength="6" required>
+		<button type="submit" onclick="loadingAnimation()" id="submitBtn">Continuer</button>
+	</form>
+	<footer>
+		<a id="retcy_logo"href="https://github.com/retr0cube"><img src="{{ url_for('static', filename='text848-6.png')}}" alt="Retcy logo"></a>
+		<a href="/" id="info">Accueil</a>
+	</footer>
+</body>
+	<script src="{{ url_for('static', filename='main.js')}}"></script>
+	<script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
+</html>

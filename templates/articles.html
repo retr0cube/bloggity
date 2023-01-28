@@ -3,4 +3,17 @@
 {% block title %}Articles - Bloggity{% endblock%}
 
 {% block head %}
+<h1 align="center" id="title-p">Nos Articles</h1>
+<div id="wrapper">
+{% for p in articles %}
+	{% if p.image %}
+	<a href="{{ url_for('article', id=p.id) }}" id="img_title"><img src="{{p.image}}" alt="Image d'article"></a>
+	{% endif %}
+	<div id="postcard">
+		<a href="{{ url_for('article', id=p.id) }}">{{ p.title }}</a>
+		<h2>par {{ p.author }}</h2>
+		<p>{{ p.content[:300] + "..." }}</p>
+	</div>
+{% endfor %}	
+</div>
 {% endblock%}

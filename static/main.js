@@ -34,4 +34,9 @@ function toggleMenu() {
 	element.classList.toggle("toggled");
 } 
 
+function loadingAnimation() {
+	var btn = document.getElementById("submitBtn");
+	btn.insertAdjacentHTML('afterbegin', '<iconify-icon inline icon="line-md:loading-twotone-loop"></iconify-icon>');
+}
+
 
