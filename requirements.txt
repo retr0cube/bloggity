@@ -7,7 +7,7 @@ Flask==2.2.2
 Flask-Admin==1.6.0
 Flask-BabelEx==0.9.4
 Flask-Mail==0.9.1
-Flask-Markdown==0.3
+flask-markdown2==0.0.3
 Flask-Principal==0.4.0
 Flask-SQLAlchemy==3.0.2
 Flask-WTF==1.1.1
@@ -16,6 +16,7 @@ gunicorn==20.1.0
 idna==3.4
 itsdangerous==2.1.2
 Jinja2==3.1.2
+jinja2-markdown==0.0.3
 Markdown==3.4.1
 MarkupSafe==2.1.2
 passlib==1.7.4
