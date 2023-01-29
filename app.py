@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_admin import Admin, AdminIndexView, expose
 from flask_admin.contrib.sqla import ModelView
 from wtforms import TextAreaField
-from flaskext.markdown import Markdown
+from flask.ext.markdown import Markdown
 
 app = Flask(__name__)
 Markdown(app)
