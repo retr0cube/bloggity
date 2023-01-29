@@ -5,7 +5,11 @@
 {% block head %}
 <div id="post_wrapper">
 	<h1>{{ article.title }}</h1>
-	<h2>{{ article.author }}</h2>
-	<p>{{ article.content }}</p>
+	<h2>par {{ article.author }} | {{ article.genre.title() }}</h2>
+	{% if article.image %}
+	<img src="{{article.image}}" alt="Image d'article">
+	{% endif %}
+	<p>
+	{{ article.content | markdown}}</p>
 </div>
 {% endblock %}

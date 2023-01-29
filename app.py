@@ -2,18 +2,21 @@ from flask import Flask, url_for, render_template, request, redirect, session, a
 from flask_sqlalchemy import SQLAlchemy
 from flask_admin import Admin, AdminIndexView, expose
 from flask_admin.contrib.sqla import ModelView
+from wtforms import TextAreaField
+from flaskext.markdown import Markdown
 
 app = Flask(__name__)
+Markdown(app)
 
 app.config['FLASK_ADMIN_SWATCH'] = "cerulean"
 app.config['SECRET_KEY'] = "retr0cube"
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///bloggity.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://bloggitydb_user:ilYZa40ILv1FP4IvzGYhZjer9CHCVwF1@dpg-cfb88i1gp3jsh69mvau0-a.frankfurt-postgres.render.com/bloggitydb"
 
 db = SQLAlchemy()
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.Integer, unique=True)
+    name = db.Column(db.String, unique=True)
     special_code = db.Column(db.String(255), unique=True)
 
 class Posts(db.Model):
@@ -50,7 +53,16 @@ class BloggityMV(ModelView):
         else:
             abort(403)
 
-    form_widget_args = {'content': {'style': 'height: 500px;resize: none;', 'rows': 400}}
+    form_overrides = {'content': TextAreaField,}
+    form_choices = {
+    'genre': [
+        ("SPORT","Sport"),
+        ("PERSPECTIVES","Perspectives"),
+        ("TECH","Technologie"),
+        ("ES","Expériences Sociales"),
+        ("AS","Activités Scolaires")
+        ]
+    }
 
 class UserView(ModelView):
         can_delete = False
@@ -75,8 +87,7 @@ def locked_page(e):
 
 @app.route("/")
 def base():
-    edito = "Test"
-    return render_template("index.html", edito=db.get_or_404(Edito, 1).content)
+    return render_template("index.html", edito=db.get_or_404(Edito, 1).content, genre=db.session.query(Posts.genre).all())
 
 @app.route("/articles")
 def articles():

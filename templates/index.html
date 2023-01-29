@@ -13,21 +13,16 @@
 <div id="genres">
 	<h1 id="title"><i class="fa-regular fa-newspaper"></i>Explorez notre contenu par genre</h1>
 	{% if genre %}
+		{% set i = -1 %}
+		{% for g in genre%}
+		<a href="/articles?order_by=genre['sport']">{{ g[i + 1].title() }}</a>
+		{% endfor %}
 	{% else %}
 		<div>
 			<h1>¯\_(ツ)_/¯</h1>
 			<p>Il n'y a pas de contenu pour le moment.</p>
 		</div>
-		{% endif %}
+	{% endif %}
 </div>
-<div id="types">
-	<h1 id="title"><i class="fa-solid fa-radio"></i>Ou par type</h1>
-	{% if genre %}
-	{% else %}
-		<div>
-			<h1>¯\_(ツ)_/¯</h1>
-			<p>Il n'y a pas de contenu pour le moment.</p>
-		</div>
-		{% endif %}
-</div>
+
 {% endblock%}
