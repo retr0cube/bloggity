@@ -3,10 +3,10 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_admin import Admin, AdminIndexView, expose
 from flask_admin.contrib.sqla import ModelView
 from wtforms import TextAreaField
-from flask.ext.markdown import Markdown
+# from flask_markdown import Markdown
 
 app = Flask(__name__)
-Markdown(app)
+# Markdown(app)
 
 app.config['FLASK_ADMIN_SWATCH'] = "cerulean"
 app.config['SECRET_KEY'] = "retr0cube"
