@@ -12,25 +12,25 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&display=swap" rel="stylesheet"> 
-
+	<link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet"> 
 </head>
 <body>
 	<header>
-		<a href="/" id="logo_link"><img src="{{ url_for('static', filename='bloggity.png') }}" alt="Bloggity logo"></a>
-		<nav id="lists">
+		<a href="/" class="logo_link"><img src="{{ url_for('static', filename='bloggity.png') }}" alt="Bloggity logo"></a>
+		<nav class="lists" id="lists">
 			<ul>
-				<li id="l1"><a {% if request.path == "/articles" %} style="border-bottom: 3px solid hsl(216, 100%, 50%);" {% endif %} href="/articles">Articles</a></li>
-				<li id="l2" ><a {% if request.path == "/multimedia" %} style="border-bottom: 3px solid hsl(216, 100%, 50%);" {% endif %} href="/multimedia">Multimédia</a></li>
+				<li class="l1"><a {% if request.path == "/articles" %} style="border-bottom: 3px solid hsl(216, 100%, 50%);" {% endif %} href="/articles">Articles</a></li>
+				<li class="l2" ><a {% if request.path == "/multimedia" %} style="border-bottom: 3px solid hsl(216, 100%, 50%);" {% endif %} href="/multimedia">Multimédia</a></li>
 				<li><a {% if request.path == "/contactez_nous" %} style="border-bottom: 3px solid hsl(216, 100%, 50%);" {% endif %} href="/contactez_nous">Contactez-nouz</a></li>
 			</ul>
 		</nav>
-		<button id="menuBtn" onclick="toggleMenu()" title="Menu"><i id="menu-ico" class="fa-solid fa-bars-staggered"></i></button>
+		<button class="menuBtn" onclick="toggleMenu()" title="Menu"><i id="menu-ico" class="fa-solid fa-bars-staggered"></i></button>
 		<button onclick="toggleDark()" title="Basculer entre le mode sombre et le mode clair"><i id="dark-mode-ico" class="fa-solid fa-moon"></i></button>
 	</header>
 	{% block head %}{% endblock%}
 	<footer>
-		<a id="retcy_logo"href="https://github.com/retr0cube"><img src="{{ url_for('static', filename='text848-6.png')}}" alt="Retcy logo"></a>
-		<a href="/login" id="info">Admin</a>
+		<a class="retcy_logo"href="https://github.com/retr0cube"><img src="{{ url_for('static', filename='text848-6.png')}}" alt="Retcy logo"></a>
+		<a href="/login" class="info">Admin</a>
 	</footer>
 </body>
  	<script src="{{ url_for('static', filename='main.js')}}"></script>

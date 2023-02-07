@@ -2,10 +2,10 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  -webkit-transition: all 0.2s 0s linear;
-  -moz-transition: all 0.2s 0s linear;
-  -o-transition: all 0.2s 0s linear;
-  transition: all 0.2s 0s linear;
+  -webkit-transition: all 0.1s 0s linear;
+  -moz-transition: all 0.1s 0s linear;
+  -o-transition: all 0.1s 0s linear;
+  transition: all 0.1s 0s linear;
   user-select: none;
 }
 
@@ -21,6 +21,9 @@ body {
 
 .dark-mode {
   background-color: #23282f;
+  color: white;
+}
+.dark-mode a {
   color: white;
 }
 .dark-mode header {
@@ -52,11 +55,12 @@ body {
   background-color: #333333;
   color: white;
 }
-.dark-mode #wrapper a {
+.dark-mode .title_a {
   color: white;
 }
 
 header {
+  z-index: 2;
   position: sticky;
   top: 0px;
   display: flex;
@@ -66,10 +70,10 @@ header {
   padding: 30px 50px;
   background-color: white;
 }
-header #logo_link {
+header .logo_link {
   margin-right: auto;
 }
-header #logo_link img {
+header .logo_link img {
   width: 8em;
 }
 header nav {
@@ -83,7 +87,7 @@ header nav ul {
   padding-right: 1.4em;
   border-right: 2px solid gray;
 }
-header nav ul #l1, header nav ul #l2 {
+header nav ul .l1, header nav ul .l2 {
   padding-right: 2em;
 }
 header nav a {
@@ -95,7 +99,7 @@ header nav a {
 header nav a:hover {
   color: #0066ff;
 }
-header #menuBtn {
+header .menuBtn {
   display: none;
 }
 header button {
@@ -122,107 +126,125 @@ footer {
   flex: 1;
   border-top: 1px solid dimgray;
 }
-footer #info {
+footer .info {
   text-decoration: none;
   color: gray;
   text-decoration-line: underline;
   transition: ease 0.5s;
 }
-footer #info:hover {
+footer .info:hover {
   color: lightgray;
 }
-footer #retcy_logo {
+footer .retcy_logo {
   margin-right: auto;
 }
-footer #retcy_logo img {
+footer .retcy_logo img {
   width: 12em;
 }
 
 /* index */
-#container {
+#icon {
+  font-size: 2em;
+  color: #0066ff;
+  padding-right: 20px;
+}
+
+.container {
   display: flex;
   flex-direction: row;
-  padding: 0 50px;
+  padding: 0 80px;
 }
-#container #edito {
-  padding: 30px;
+.container .edito {
   border-radius: 24px;
 }
-#container #edito h1 {
+.container .edito h1 {
   font-family: "PlayFair Display";
-  border-bottom: 3px dotted #0066ff;
   display: inline-block;
 }
-#container #edito p {
-  font-family: "Product Sans";
+.container .edito p {
+  font-family: "Rubik";
   text-indent: 1em;
   font-size: 1.25em;
   padding: 15px 0;
 }
-#container #edito p code {
+.container .edito p code {
   font-family: "PlayFair Display";
   float: right;
   font-style: italic;
 }
 
-#genres {
-  padding: 30px 50px;
-  font-family: "Product Sans";
-  margin: 0px 50px 4em;
+.genres {
+  padding: 0px 80px;
+  margin-bottom: 8vh;
+  font-family: "Rubik";
   border-radius: 24px;
-  border: 0.5px solid gray;
 }
-#genres #title {
-  padding-bottom: 1em;
+.genres .title {
+  font-family: "PlayFair Display";
+  display: inline-block;
 }
-#genres #title i {
-  color: #0066ff;
-  padding-right: 20px;
+.genres .cardwrap {
+  display: flex;
+  flex-flow: row wrap;
 }
-#genres a {
-  display: inline-flex;
-  font-size: 2em;
-  justify-content: space-between;
-  align-items: center;
+.genres .genre_card {
+  display: flex;
+  font-size: 1em;
+  justify-content: flex-end;
+  padding: 15px 25px;
+  margin: 15px 10px 0 0;
+  border: 1px solid gray;
+  border-radius: 50px;
+}
+.genres .genre_card a {
   text-decoration: none;
-  border-bottom: 4px dotted #0066ff;
-  color: black;
+  font-size: 1.5em;
+  margin-left: 1em;
 }
-#genres div {
+.genres .genre_card a i {
+  vertical-align: text-bottom;
+  color: #0066ff;
+}
+.genres .genre_card a i:hover {
+  color: #80b3ff;
+}
+
+.notf {
+  font-family: "Rubik";
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   font-size: 1.1em;
+  width: 100%;
 }
-#genres div h1 {
+.notf h1 {
   color: #0066ff;
 }
 
 /* 404 */
-#oops {
+.oops {
   height: 50vh;
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  font-family: "Product Sans";
+  font-family: "Rubik";
   font-size: 1.4em;
 }
-#oops h1 {
+.oops h1 {
   font-family: "PlayFair Display";
   font-size: 4em;
   letter-spacing: 15px;
   margin-bottom: 20px;
 }
-#oops a {
+.oops a {
   text-decoration: none;
   border-bottom: 2px dotted #0066ff;
   color: #0066ff;
   font-size: 0.9em;
   margin-top: 10px;
 }
-#oops a:hover {
+.oops a:hover {
   border-bottom-style: solid;
 }
 
@@ -236,7 +258,7 @@ form {
   margin-bottom: 20vh;
 }
 form h1 {
-  font-family: "Product Sans";
+  font-family: "Rubik";
   color: #0066ff;
   font-size: 2em;
 }
@@ -259,7 +281,7 @@ form input {
 }
 form button {
   padding: 5px 10px;
-  font-family: "Product sans";
+  font-family: "Rubik";
   background-color: #0066ff;
   border: none;
   color: white;
@@ -271,103 +293,106 @@ form button:hover {
   background-color: #3385ff;
 }
 
-#post_wrapper {
+.post_wrapper {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin: 0em 6em 5em;
   padding: 25px;
   border-radius: 24px;
-  border: 0.5px solid gray;
 }
-#post_wrapper img {
+.post_wrapper img {
   border-radius: 12px;
-  margin-top: 1em;
+  margin-top: 2em;
+  margin-bottom: 1.5em;
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 50%;
 }
-#post_wrapper h1 {
+.post_wrapper h1 {
   font-family: "PlayFair Display";
   font-size: 2.5em;
-  margin-top: 0.5em;
+  color: black;
 }
-#post_wrapper h2 {
+.post_wrapper h2 {
   display: inline-flex;
   font-size: 1.5em;
   color: #0066ff;
-  font-family: "PlayFair Display";
+  font-family: "Rubik";
   font-style: italic;
 }
-#post_wrapper p {
+.post_wrapper p {
   margin-top: 1em;
   text-indent: 3em;
-  word-spacing: 7px;
-  font-family: "Product Sans";
+  word-spacing: 2px;
+  font-family: "Rubik";
   font-size: 1.5em;
 }
 
-#wrapper {
-  display: flex;
+.wrapper {
   margin: 0em 6em 5em;
   padding: 25px;
   border-radius: 24px;
-  border: 0.5px solid gray;
 }
-#wrapper #img_title {
+.wrapper .postwrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.wrapper .img_title {
   border: none;
   margin-right: 1em;
 }
-#wrapper #img_title img {
+.wrapper .img_title img {
   border-radius: 12px;
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
 }
-#wrapper #img_title img:hover {
+.wrapper .img_title img:hover {
   filter: brightness(50%);
 }
-#wrapper #postcard {
+.wrapper .postcard {
   padding-bottom: 15px;
-  border-bottom: 1px solid gray;
 }
-#wrapper #postcard a {
+.wrapper .postcard a {
   text-decoration: none;
-  color: black;
   border-bottom: 7px dotted #0066ff;
   font-family: "PlayFair Display";
   font-size: 1.7em;
 }
-#wrapper #postcard a:hover {
+.wrapper .postcard a:hover {
   color: #0066ff;
 }
-#wrapper #postcard h2 {
+.wrapper .postcard h2 {
   display: inline-flex;
   font-size: 1.1em;
   color: #0066ff;
   font-family: "PlayFair Display";
   font-style: italic;
 }
-#wrapper #postcard p {
+.wrapper .postcard p {
   text-indent: 1em;
   margin-top: 1em;
-  font-family: "Product Sans";
+  font-family: "Rubik";
   font-size: 1.1em;
 }
 
-#title-p {
-  font-family: "Product Sans";
+.title-p {
+  font-family: "Rubik";
   margin-bottom: 1em;
   color: #0066ff;
 }
 
-#title-c {
-  font-family: "Product Sans";
+.title-c {
+  font-family: "Rubik";
   color: #0066ff;
   margin-bottom: 1em;
 }
 
-#team {
+.team {
   border: 0.5px solid gray;
   padding: 20px;
   border-radius: 24px;
@@ -377,44 +402,54 @@ form button:hover {
   justify-content: center;
   flex-direction: column;
 }
-#team p, #team ul {
+.team p, .team ul {
   margin-bottom: 15px;
-  font-family: "Product Sans";
+  font-family: "Rubik";
   font-size: 1.1em;
 }
-#team h3 {
+.team h3 {
   font-family: "PlayFair Display";
   font-style: italic;
   font-size: 1.5em;
   margin-bottom: 15px;
 }
-#team ul {
+.team ul {
   list-style-type: none;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 800px) {
   header {
     padding: 20px 30px;
   }
-  header #logo_link img {
-    content: url("../feather.png");
-    width: 1.5em;
+  header .logo_link img {
+    width: 6em;
   }
   header nav {
     position: fixed;
-    top: 103.817px;
-    opacity: 0;
-    width: 100vw;
     pointer-events: none;
+    top: 83.25px;
+    right: 0;
+    opacity: 0;
+  }
+  header nav ul {
+    display: flex;
+    justify-content: center;
+    padding: 15px 0 25px 0;
+    margin: 0;
+    width: 100vw;
     border: none;
+  }
+  header nav ul a {
+    opacity: 0;
+    font-size: 0.9em;
   }
   header .toggled {
     position: fixed;
     pointer-events: auto;
-    top: 103.817px;
+    top: 83.25px;
     right: 0;
     opacity: 1;
   }
@@ -426,58 +461,73 @@ form button:hover {
     margin: 0;
     width: 100vw;
     border: none;
-    transition: all ease-in-out 0.2s;
   }
   header .toggled ul a {
+    opacity: 1;
     font-size: 0.9em;
   }
-  header #menuBtn {
+  header .menuBtn {
     display: initial;
   }
 
-  #container {
-    padding: 0 10px;
+  .container {
+    margin-top: 1vh;
+    padding: 0 40px;
   }
-  #container #edito p {
+  .container .edito p {
     font-size: 1.2em;
   }
 
-  #genres {
+  .genres {
     padding: 20px;
-    margin: 0 30px;
+    margin: 0 20px;
   }
-  #genres #title {
-    font-size: 1.3em;
+  .genres .title {
+    vertical-align: middle;
+    font-size: 1.5em;
     padding-bottom: 0.5em;
   }
-  #genres #title i {
-    padding-right: 10px;
-  }
-  #genres div p {
+  .genres div p {
     font-size: 1em;
   }
+  .genres .cardwrap {
+    flex-direction: column;
+  }
+  .genres .genre_card {
+    justify-content: space-between;
+  }
+  .genres .genre_card a {
+    margin-left: auto;
+  }
 
-  #wrapper {
+  .wrapper {
     justify-content: center;
     flex-direction: column;
-    margin: 0 10vw 5em;
+    margin: 0 5vw 5em;
   }
-  #wrapper h2 {
+  .wrapper h2 {
     margin-top: 0.5em;
   }
 
-  #post_wrapper {
-    border: none;
+  .post_wrapper {
     justify-content: center;
     flex-direction: column;
     margin: 0;
+  }
+  .post_wrapper img {
+    width: 96.5vw;
+    border-radius: 0;
+    margin-left: -25px;
+  }
+  .post_wrapper p {
+    font-size: 1.2em;
   }
 
   form {
     margin-top: 20vh;
   }
 
-  #team {
+  .team {
     margin: 0 10vw 5vh;
   }
 }

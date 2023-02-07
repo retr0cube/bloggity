@@ -3,26 +3,31 @@
 {% block title %}Bloggity - Blog Scolaire du Lycée Al Majd{% endblock%}
 
 {% block head %}
-<div id="container">
+<div class="container">
 <!-- 	<img src="{{ url_for('static', filename='bloggity.png') }}" alt="Bloggity logo">	
- -->	<div id="edito">	
-		<h1>ÉDITO</h1>
+ -->	<div class="edito">	
+		<i id="icon" class="fa-solid fa-feather"></i><h1>Édito</h1>
 		<p>{{ edito }}<br><code>-L'équipe rédactrice</code></p>
 	</div>
 </div>
-<div id="genres">
-	<h1 id="title"><i class="fa-regular fa-newspaper"></i>Explorez notre contenu par genre</h1>
+<div class="genres">
+	<i id="icon" class="fa-solid fa-align-center"></i><h1 class="title">Explorez notre contenu</h1>
+	<div class="cardwrap">
 	{% if genre %}
 		{% set i = -1 %}
-		{% for g in genre%}
-		<a href="/articles?order_by=genre['sport']">{{ g[i + 1].title() }}</a>
+		{% for g in genre %}
+			<div class="genre_card">
+				<h2>{{ name[g[i+1]].title() }}</h2>
+				<a href="{{ url_for('article_by_genre', p_genre=route[g[i+1]]) }}" ><i class="fa-solid fa-arrow-right"></i></a>
+			</div>
 		{% endfor %}
 	{% else %}
-		<div>
+		<div class="notf">
 			<h1>¯\_(ツ)_/¯</h1>
 			<p>Il n'y a pas de contenu pour le moment.</p>
 		</div>
-	{% endif %}
+	{% endif %}		
+	</div>
 </div>
 
 {% endblock%}

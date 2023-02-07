@@ -14,10 +14,12 @@ app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://bloggitydb_user:ilYZa40ILv
 
 db = SQLAlchemy()
 
+
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, unique=True)
     special_code = db.Column(db.String(255), unique=True)
+
 
 class Posts(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -27,14 +29,17 @@ class Posts(db.Model):
     author = db.Column(db.String, nullable=False)
     content = db.Column(db.String, nullable=False)
 
+
 class Multimedia(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    source= db.Column(db.String, nullable=False, unique=True)
-    title = db.Column(db.String, nullable= False)
+    source = db.Column(db.String, nullable=False, unique=True)
+    title = db.Column(db.String, nullable=False)
+
 
 class Edito(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.String, nullable=False)
+
 
 class BloggityAV(AdminIndexView):
     def is_visible(self):
@@ -46,6 +51,7 @@ class BloggityAV(AdminIndexView):
             'admin/dashboard.html',
         )
 
+
 class BloggityMV(ModelView):
     def is_accessible(self):
         if "logged_in" in session:
@@ -53,21 +59,23 @@ class BloggityMV(ModelView):
         else:
             abort(403)
 
-    form_overrides = {'content': TextAreaField,}
+    form_overrides = {'content': TextAreaField, }
     form_choices = {
-    'genre': [
-        ("SPORT","Sport"),
-        ("PERSPECTIVES","Perspectives"),
-        ("TECH","Technologie"),
-        ("ES","Expériences Sociales"),
-        ("AS","Activités Scolaires")
+        'genre': [
+            ("SPORT", "Sport"),
+            ("PERSPECTIVES", "Perspectives"),
+            ("TECH", "Technologie"),
+            ("ES", "Expériences Sociales"),
+            ("AS", "Activités Scolaires")
         ]
     }
 
+
 class UserView(ModelView):
-        can_delete = False
-        can_edit = False
-        can_create = False
+    can_delete = False
+    can_edit = False
+    can_create = False
+
 
 administrator = Admin(app, name="Bloggity", template_mode='bootstrap3')
 administrator.add_view(UserView(User, db.session))
@@ -77,55 +85,92 @@ administrator.add_view(BloggityMV(Multimedia, db.session))
 
 db.init_app(app)
 
+
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
+
 
 @app.errorhandler(403)
 def locked_page(e):
     return render_template('403.html'), 403
 
+genre_list = {
+    "sport":"SPORT",
+    "perspectives":"PERSPECTIVES",
+    "techno":"TECH",
+    "ex_sociale":"ES",
+    "activite_ecole":"AS"
+}
+
 @app.route("/")
 def base():
-    return render_template("index.html", edito=db.get_or_404(Edito, 1).content, genre=db.session.query(Posts.genre).all())
+    genre_name = {
+        "⚽ sport":"SPORT",
+        "✨ perspectives":"PERSPECTIVES",
+        "🖥 technologie":"TECH",
+        "👨‍👧‍👧 expériences sociales":"ES",
+        "🏫 activité scolaires":"AS"
+    }
+    inv_dict = {value:key for key, value in genre_name.items()}
+    inv_dict_2 = {value:key for key, value in genre_list.items()}
+    return render_template("index.html", edito=db.get_or_404(Edito, 1).content, genre=db.session.query(Posts.genre).all(), name=inv_dict, route=inv_dict_2)
+
 
 @app.route("/articles")
 def articles():
-    wposts = db.session.execute(db.select(Posts).order_by(Posts.title)).scalars()
+    wposts = db.session.execute(
+        db.select(Posts).order_by(Posts.title)).scalars()
     return render_template("articles.html", articles=wposts)
 
-@app.route("/article/<int:id>")
+
+@app.route("/articles/<int:id>")
 def article(id):
     wpost = db.get_or_404(Posts, id)
     return render_template("post.html", article=wpost)
-    
+
+
+@app.route("/articles/<p_genre>")
+def article_by_genre(p_genre):
+    if str(p_genre) in genre_list :
+        genre_posts = Posts.query.filter(Posts.genre == genre_list[f"{p_genre}"]).all()
+        return render_template("articles.html", articles=genre_posts)
+    else:
+        abort(404)
+
 @app.route("/contactez_nous")
 def contact():
     return render_template("contact.html")
+
 
 @app.route("/multimedia")
 def multimedia():
     return render_template("multimedia.html")
 
+
 @app.route("/login")
 def login():
     return render_template("login.html")
 
-@app.route("/login", methods=["GET","POST"])
+
+@app.route("/login", methods=["GET", "POST"])
 def check_code():
     try:
-        code = db.session.query(User.name).filter(User.special_code == request.form["pass"]).first()
+        code = db.session.query(User.name).filter(
+            User.special_code == request.form["pass"]).first()
         session['username'] = code[0]
         session["logged_in"] = True
         return redirect(url_for("admin.index"))
     except:
         return render_template("login.html", failed=True)
 
+
 @app.route('/logout')
 def logout():
     session["logged_out"] = True
-    session.pop('username',None)
+    session.pop('username', None)
     return redirect(url_for("base"))
 
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, host="0.0.0.0", port="8080")

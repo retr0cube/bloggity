@@ -11,13 +11,13 @@ function toggleDark() {
 	if (ico.className == 'fa-solid fa-moon') {
     ico.classList.remove('fa-solid','fa-moon');
     ico.classList.add('fa-solid',"fa-sun");
-    document.cookie = "dark=true"
+    document.cookie = "dark=true; path=/"
 } else {
-		document.cookie = "dark=false"
+		document.cookie = "dark=false; path=/"
     ico.classList.remove('fa-solid','fa-sun');
     ico.classList.add('fa-solid','fa-moon');
 }
-var element = document.body;
+	var element = document.body;
 	element.classList.toggle("dark-mode");
 }
 
@@ -36,7 +36,7 @@ function toggleMenu() {
 
 function loadingAnimation() {
 	var btn = document.getElementById("submitBtn");
-	btn.insertAdjacentHTML('afterbegin', '<iconify-icon inline icon="line-md:loading-twotone-loop"></iconify-icon>');
+	btn.insertAdjacentHTML('afterbegin', '<iconify-icon style="padding-right:10px;" inline icon="line-md:loading-twotone-loop"></iconify-icon>');
 }
 
 

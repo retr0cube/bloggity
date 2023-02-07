@@ -3,17 +3,26 @@
 {% block title %}Articles - Bloggity{% endblock%}
 
 {% block head %}
-<h1 align="center" id="title-p">Nos Articles</h1>
-<div id="wrapper">
-{% for p in articles %}
-	{% if p.image %}
-	<a href="{{ url_for('article', id=p.id) }}" id="img_title"><img src="{{p.image}}" alt="Image d'article"></a>
-	{% endif %}
-	<div id="postcard">
-		<a href="{{ url_for('article', id=p.id) }}">{{ p.title }}</a>
-		<h2>par {{ p.author }}</h2>
-		<p>{{ p.content[:450]+ "..." }}</p>
-	</div><br>
-{% endfor %}	
+<h1 align="center" class="title-p">Nos Articles</h1>
+<div class="wrapper">
+	<div class="postwrap">
+{% if articles and not articles == "[]" %}
+	{% for p in articles %}
+		{% if p.image %}
+		<a href="{{ url_for('article', id=p.id) }}" class="img_title"><img src="{{p.image}}" alt="Image d'article"></a>
+		{% endif %}
+		<div class="postcard">
+			<a class="title_a" href="{{ url_for('article', id=p.id) }}">{{ p.title }}</a>
+			<h2>par {{ p.author }} | {{ p.genre.title() }}</h2>
+			<p>{{ p.content[:200]+ "..." }}</p>
+		</div><br>
+	{% endfor %}
+{% else %}
+	<div class="notf">
+		<h1>¯\_(ツ)_/¯</h1>
+		<p>Il n'y a pas de contenu pour le moment.</p>
+	</div>
+{% endif %}
+	</div>
 </div>
 {% endblock%}

@@ -11,8 +11,8 @@
 </head>
 <body>
 	<header>
-		<a href="/" id="logo_link"><img src="{{ url_for('static', filename='bloggity.png') }}" alt="Bloggity logo"></a>
-		<button onclick="toggleDark()" title="Basculer entre le mode sombre et le mode clair"><i id="dark-mode-ico" class="fa-solid fa-moon"></i></button>
+		<a href="/" class="logo_link"><img src="{{ url_for('static', filename='bloggity.png') }}" alt="Bloggity logo"></a>
+		<button onclick="toggleDark()" title="Basculer entre le mode sombre et le mode clair"><i id="dark-mode-ico" class="dark-mode-ico" class="fa-solid fa-moon"></i></button>
 	</header>
 	<form method="post" action="/login">
 		<h1>Bienvenue!</h1>
@@ -21,11 +21,11 @@
 		<h4 style="color: red;"><i class="fa-solid fa-circle-xmark"></i> Le code est incorrect!</h4>
 		{% endif %}
 		<input type="text" name="pass" placeholder="******" maxlength="6" required>
-		<button type="submit" onclick="loadingAnimation()" id="submitBtn">Continuer</button>
+		<button type="submit" onclick="loadingAnimation()" id="submitBtn" class="submitBtn">Continuer</button>
 	</form>
 	<footer>
-		<a id="retcy_logo"href="https://github.com/retr0cube"><img src="{{ url_for('static', filename='text848-6.png')}}" alt="Retcy logo"></a>
-		<a href="/" id="info">Accueil</a>
+		<a class="retcy_logo"href="https://github.com/retr0cube"><img src="{{ url_for('static', filename='text848-6.png')}}" alt="Retcy logo"></a>
+		<a href="/" class="info">Accueil</a>
 	</footer>
 </body>
 	<script src="{{ url_for('static', filename='main.js')}}"></script>
