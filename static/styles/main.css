@@ -6,7 +6,6 @@
   -moz-transition: all 0.1s 0s linear;
   -o-transition: all 0.1s 0s linear;
   transition: all 0.1s 0s linear;
-  user-select: none;
 }
 
 html {
@@ -55,12 +54,19 @@ body {
   background-color: #333333;
   color: white;
 }
-.dark-mode .title_a {
+.dark-mode .subwrapper h1 {
   color: white;
+}
+.dark-mode .wrapper .postwrap .postcard .title_a {
+  color: white;
+}
+.dark-mode .wrapper .postwrap .postcard .title_a:hover {
+  color: #0066ff;
 }
 
 header {
-  z-index: 2;
+  user-select: none;
+  z-index: 1;
   position: sticky;
   top: 0px;
   display: flex;
@@ -120,13 +126,15 @@ header button:hover {
 
 footer {
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
+  align-items: center;
   background-color: #23282f;
   padding: 30px 50px 40px;
   flex: 1;
   border-top: 1px solid dimgray;
 }
 footer .info {
+  margin-left: auto;
   text-decoration: none;
   color: gray;
   text-decoration-line: underline;
@@ -135,11 +143,16 @@ footer .info {
 footer .info:hover {
   color: lightgray;
 }
-footer .retcy_logo {
-  margin-right: auto;
+footer .git_logo, footer .facebook_logo {
+  margin-right: 0.5em;
+  font-size: 2em;
 }
-footer .retcy_logo img {
-  width: 12em;
+footer .git_logo i, footer .facebook_logo i {
+  color: gray;
+  vertical-align: text-bottom;
+}
+footer .git_logo i:hover, footer .facebook_logo i:hover {
+  color: lightgray;
 }
 
 /* index */
@@ -175,20 +188,22 @@ footer .retcy_logo img {
 
 .genres {
   padding: 0px 80px;
-  margin-bottom: 8vh;
+  margin-bottom: 10vh;
   font-family: "Rubik";
   border-radius: 24px;
 }
 .genres .title {
   font-family: "PlayFair Display";
   display: inline-block;
+  margin-bottom: 12px;
 }
 .genres .cardwrap {
+  user-select: none;
   display: flex;
   flex-flow: row wrap;
 }
 .genres .genre_card {
-  display: flex;
+  display: inline-flex;
   font-size: 1em;
   justify-content: flex-end;
   padding: 15px 25px;
@@ -295,50 +310,69 @@ form button:hover {
 
 .post_wrapper {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0em 6em 5em;
-  padding: 25px;
-  border-radius: 24px;
 }
-.post_wrapper img {
+.post_wrapper .share {
+  padding: 30px 30px;
+  border-top-right-radius: 24px;
+  background-color: #0066ff;
+}
+.post_wrapper .share p {
+  font-family: "Rubik";
+  font-style: italic;
+  color: white;
+  font-size: 1.4em;
+  margin: 10px 0;
+}
+
+.subwrapper {
+  padding: 25px;
+  max-width: 70vw;
+  margin-left: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.subwrapper img {
   border-radius: 12px;
   margin-top: 2em;
   margin-bottom: 1.5em;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
+  width: 45vw;
+  height: 400px;
 }
-.post_wrapper h1 {
+.subwrapper h1 {
   font-family: "PlayFair Display";
   font-size: 2.5em;
   color: black;
 }
-.post_wrapper h2 {
+.subwrapper h2 {
   display: inline-flex;
   font-size: 1.5em;
   color: #0066ff;
   font-family: "Rubik";
   font-style: italic;
 }
-.post_wrapper p {
+.subwrapper h2 h2 {
+  display: none;
+}
+.subwrapper p {
   margin-top: 1em;
   text-indent: 3em;
-  word-spacing: 2px;
-  font-family: "Rubik";
-  font-size: 1.5em;
+  word-spacing: 4px;
+  font-family: "PlayFair Display";
+  font-size: 1.2em;
 }
 
 .wrapper {
-  margin: 0em 6em 5em;
+  margin: 0em 6em 4em;
   padding: 25px;
-  border-radius: 24px;
-}
-.wrapper .postwrap {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+}
+.wrapper .postwrap {
+  display: flex;
+  flex-direction: row;
   align-items: center;
 }
 .wrapper .img_title {
@@ -346,10 +380,9 @@ form button:hover {
   margin-right: 1em;
 }
 .wrapper .img_title img {
-  border-radius: 12px;
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
+  border-radius: 8px;
+  height: 130px;
+  width: 200px;
 }
 .wrapper .img_title img:hover {
   filter: brightness(50%);
@@ -357,26 +390,28 @@ form button:hover {
 .wrapper .postcard {
   padding-bottom: 15px;
 }
-.wrapper .postcard a {
+.wrapper .postcard .title_a {
+  color: black;
   text-decoration: none;
   border-bottom: 7px dotted #0066ff;
   font-family: "PlayFair Display";
   font-size: 1.7em;
+  margin-right: 10px;
 }
-.wrapper .postcard a:hover {
+.wrapper .postcard .title_a:hover {
   color: #0066ff;
 }
 .wrapper .postcard h2 {
-  display: inline-flex;
+  display: flex;
   font-size: 1.1em;
+  margin: 9px 0;
   color: #0066ff;
-  font-family: "PlayFair Display";
+  font-family: "Rubik";
   font-style: italic;
 }
 .wrapper .postcard p {
   text-indent: 1em;
-  margin-top: 1em;
-  font-family: "Rubik";
+  font-family: "PlayFair Display";
   font-size: 1.1em;
 }
 
@@ -505,8 +540,16 @@ form button:hover {
     flex-direction: column;
     margin: 0 5vw 5em;
   }
-  .wrapper h2 {
-    margin-top: 0.5em;
+  .wrapper .postwrap {
+    margin: 0;
+    display: flow-root;
+  }
+  .wrapper .postwrap h2 {
+    margin-top: 0.7em;
+  }
+  .wrapper .postwrap img {
+    height: 200px;
+    width: 100%;
   }
 
   .post_wrapper {
@@ -514,13 +557,27 @@ form button:hover {
     flex-direction: column;
     margin: 0;
   }
-  .post_wrapper img {
-    width: 96.5vw;
-    border-radius: 0;
-    margin-left: -25px;
+  .post_wrapper .share {
+    padding: 10px 30px;
+    display: flex;
+    justify-content: center;
+    border-top-right-radius: unset;
   }
-  .post_wrapper p {
-    font-size: 1.2em;
+  .post_wrapper .share p {
+    display: none;
+  }
+  .post_wrapper .subwrapper {
+    max-width: 100vw;
+    align-items: unset;
+  }
+  .post_wrapper .subwrapper img {
+    width: 114.5vw;
+    height: auto;
+    border-radius: 0;
+    margin-left: -25vw;
+  }
+  .post_wrapper .subwrapper p {
+    font-size: 1.3em;
   }
 
   form {

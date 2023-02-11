@@ -1,16 +1,29 @@
 {% extends "base.html" %}
 
-{% block title %}{{ article.title }}{% endblock%}
+{% block title %}{{ article.title }} - Bloggity{% endblock%}
 
 {% block head %}
 <div class="post_wrapper">
-	<h1>{{ article.title }}</h1><nobr>
-	<h2>par {{ article.author }} | {{ article.genre.title() }}</h2>
-
-	{% if article.image %}
-	<img src="{{article.image}}" alt="Image d'article">
-	{% endif %}
-	<p>
-	{{ article.content }}</p>
+	<div class="share">
+		<p> {{ genre[article.genre].title() }}</p>
+		<div class="socializer" data-features="48px,opacity,icon-white,bg-none,pad" data-sites="facebook,twitter,reddit,email"></div>
+	</div>
+	<div class="subwrapper">
+		<h1>{{ article.title }}</h1>
+		<h2>par {{ article.author }}<h2>Sous {{ genre[article.genre].title() }}</h2></h2>
+		{% if article.image %}
+		<img src="{{article.image}}" alt="Image d'article">
+		{% endif %}
+		<p>{{ article.content }}</p>		
+	</div>
 </div>
+<!-- <div class="comments">
+	<form action="">
+		<input type="text">
+		<button></button>
+	</form>
+	<div>
+		
+	</div>
+</div> -->
 {% endblock %}

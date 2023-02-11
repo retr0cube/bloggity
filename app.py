@@ -103,17 +103,19 @@ genre_list = {
     "activite_ecole":"AS"
 }
 
+genre_name = {
+    "⚽ sport":"SPORT",
+    "✨ perspectives":"PERSPECTIVES",
+    "💾 technologie":"TECH",
+    "👨‍👧‍👧 expériences sociales":"ES",
+    "🏫 activité scolaires":"AS"
+}
+inv_dict = {value:key for key, value in genre_name.items()}
+inv_dict_2 = {value:key for key, value in genre_list.items()}
+
+
 @app.route("/")
 def base():
-    genre_name = {
-        "⚽ sport":"SPORT",
-        "✨ perspectives":"PERSPECTIVES",
-        "🖥 technologie":"TECH",
-        "👨‍👧‍👧 expériences sociales":"ES",
-        "🏫 activité scolaires":"AS"
-    }
-    inv_dict = {value:key for key, value in genre_name.items()}
-    inv_dict_2 = {value:key for key, value in genre_list.items()}
     return render_template("index.html", edito=db.get_or_404(Edito, 1).content, genre=db.session.query(Posts.genre).all(), name=inv_dict, route=inv_dict_2)
 
 
@@ -121,20 +123,20 @@ def base():
 def articles():
     wposts = db.session.execute(
         db.select(Posts).order_by(Posts.title)).scalars()
-    return render_template("articles.html", articles=wposts)
+    return render_template("articles.html", articles=wposts, genre=inv_dict)
 
 
 @app.route("/articles/<int:id>")
 def article(id):
     wpost = db.get_or_404(Posts, id)
-    return render_template("post.html", article=wpost)
+    return render_template("post.html", article=wpost, genre=inv_dict)
 
 
 @app.route("/articles/<p_genre>")
 def article_by_genre(p_genre):
     if str(p_genre) in genre_list :
         genre_posts = Posts.query.filter(Posts.genre == genre_list[f"{p_genre}"]).all()
-        return render_template("articles.html", articles=genre_posts)
+        return render_template("articles.html", articles=genre_posts, genre=inv_dict)
     else:
         abort(404)
 

@@ -36,7 +36,11 @@ function toggleMenu() {
 
 function loadingAnimation() {
 	var btn = document.getElementById("submitBtn");
-	btn.insertAdjacentHTML('afterbegin', '<iconify-icon style="padding-right:10px;" inline icon="line-md:loading-twotone-loop"></iconify-icon>');
+	var inp_val = document.getElementById("pass").value;
+	console.log(inp_val.length)
+	if (inp_val.length == 6) {
+			btn.insertAdjacentHTML('afterbegin', '<iconify-icon style="padding-right:10px;" inline icon="line-md:loading-twotone-loop"></iconify-icon>');
+	}
 }
 
 

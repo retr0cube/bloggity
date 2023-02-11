@@ -11,7 +11,6 @@ $secondary-color: hsl(215, 15%, 16%)
 	-moz-transition: all 0.1s 0s linear
 	-o-transition: all 0.1s 0s linear
 	transition: all 0.1s 0s linear
-	user-select: none
 
 html
 	height: 100%
@@ -47,12 +46,17 @@ body
 	form input
 		background-color: hsl(0, 0%, 20%)
 		color: white
-	.title_a
-			color: white
+	.subwrapper h1
+		color: white
+	.wrapper .postwrap .postcard .title_a
+		color: white
+		&:hover
+			color: $main-color
 
 
 header
-	z-index: 2
+	user-select: none
+	z-index: 1
 	position: sticky
 	top: 0px
 	display: flex
@@ -104,22 +108,28 @@ header
 
 footer 
 	display: flex
-	justify-content: flex-end
+	justify-content: flex-start
+	align-items: center
 	background-color: $secondary-color	
 	padding: 30px 50px 40px
 	flex: 1
 	border-top: 1px solid dimgray
-	.info 
+	.info
+		margin-left: auto
 		text-decoration: none
 		color: gray
 		text-decoration-line: underline
 		transition: ease .5s
 		&:hover
 			color: lightgray
-	.retcy_logo
-		margin-right: auto
-		img 
-			width: 12em
+	.git_logo, .facebook_logo
+		margin-right: .5em
+		font-size: 2em
+		i 
+			color: gray
+			vertical-align: text-bottom
+			&:hover
+				color: lightgray
 
 /* index */
 
@@ -148,18 +158,20 @@ footer
 				font-style: italic
 .genres
 	padding: 0px 80px
-	margin-bottom: 8vh
+	margin-bottom: 10vh
 	font-family: "Rubik"
 	border-radius: 24px
 	.title
 		font-family: "PlayFair Display"
 		display: inline-block
+		margin-bottom: 12px
 	.cardwrap
+		user-select: none
 		display: flex
 		flex-flow: row wrap
 
 	.genre_card
-		display: flex
+		display: inline-flex
 		font-size: 1em
 		justify-content: flex-end
 		padding: 15px 25px 
@@ -254,25 +266,37 @@ form
 
 .post_wrapper
 	display: flex
-	justify-content: center
-	align-items: center
-	margin: 0em 6em 5em
+	.share
+		p
+			font-family: "Rubik"
+			font-style: italic
+			color: white
+			font-size: 1.4em
+			margin: 10px 0
+		padding: 30px 30px 
+		border-top-right-radius: 24px
+		background-color: $main-color
+.subwrapper
 	padding: 25px
-	border-radius: 24px
-	
+	max-width: 70vw
+	margin-left: 1em
+	display: flex
+	flex-direction: column
+	align-items: center
+
 	img
 		border-radius: 12px
 		margin-top: 2em
 		margin-bottom: 1.5em
-		display: block
-		margin-left: auto
-		margin-right: auto
-		width: 50%
+		width: 45vw
+		height: 400px
 	h1
 		font-family: "PlayFair Display"
 		font-size: 2.5em
 		color: black
 	h2 
+		h2
+			display: none
 		display: inline-flex
 		font-size: 1.5em
 		color:  $main-color
@@ -281,51 +305,53 @@ form
 	p
 		margin-top: 1em
 		text-indent: 3em
-		word-spacing: 2px
-		font-family: "Rubik"
-		font-size: 1.5em
+		word-spacing: 4px
+		font-family: "PlayFair Display"
+		font-size: 1.2em
 
 
 .wrapper
-	margin: 0em 6em 5em
+	margin: 0em 6em 4em
 	padding: 25px
-	border-radius: 24px
+	display: flex
+	flex-direction: column
+	justify-content: center
+	align-items: center
 
 	.postwrap
 		display: flex
-		flex-direction: column
-		justify-content: center
+		flex-direction: row
 		align-items: center
 	.img_title
 		border: none
 		margin-right: 1em
 		img
-			border-radius: 12px
-			max-width: 100%
-			max-height: 100%
-			object-fit: contain
+			border-radius: 8px
+			height: 130px
+			width: 200px
 			&:hover
 				filter: brightness(50%)
-
 	.postcard
 		padding-bottom: 15px
-		a
+		.title_a
+			color: black
 			text-decoration: none
 			border-bottom: 7px dotted $main-color
 			font-family: "PlayFair Display"
 			font-size: 1.7em
+			margin-right: 10px
 			&:hover
 				color: $main-color
 		h2 
-			display: inline-flex
+			display: flex
 			font-size: 1.1em
+			margin: 9px 0
 			color:  $main-color
-			font-family: "PlayFair Display"
+			font-family: "Rubik"
 			font-style: italic
 		p
 			text-indent: 1em
-			margin-top: 1em
-			font-family: "Rubik"
+			font-family: "PlayFair Display"
 			font-size: 1.1em
 
 .title-p
@@ -429,19 +455,36 @@ form
 		justify-content: center
 		flex-direction: column
 		margin: 0 5vw 5em
-		h2
-			margin-top: .5em
+		.postwrap
+			margin: 0
+			display: flow-root
+			h2
+				margin-top: .7em
+			img
+				height: 200px
+				width: 100%
 
 	.post_wrapper
 		justify-content: center
 		flex-direction: column
 		margin: 0
-		img
-			width: 96.5vw
-			border-radius: 0
-			margin-left:-25px
-		p
-			font-size: 1.2em
+		.share
+			padding: 10px 30px
+			p
+				display: none
+			display: flex
+			justify-content: center
+			border-top-right-radius: unset
+		.subwrapper
+			max-width: 100vw
+			align-items: unset
+			img
+				width: 114.5vw
+				height: auto
+				border-radius: 0
+				margin-left:-25vw
+			p
+				font-size: 1.3em
 	form
 		margin-top: 20vh
 

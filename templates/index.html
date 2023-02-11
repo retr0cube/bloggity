@@ -4,14 +4,13 @@
 
 {% block head %}
 <div class="container">
-<!-- 	<img src="{{ url_for('static', filename='bloggity.png') }}" alt="Bloggity logo">	
- -->	<div class="edito">	
+		<div class="edito">	
 		<i id="icon" class="fa-solid fa-feather"></i><h1>Édito</h1>
 		<p>{{ edito }}<br><code>-L'équipe rédactrice</code></p>
 	</div>
 </div>
 <div class="genres">
-	<i id="icon" class="fa-solid fa-align-center"></i><h1 class="title">Explorez notre contenu</h1>
+	<i id="icon" class="fa-solid fa-align-center"></i><h1 class="title">Explorez nos articles</h1>
 	<div class="cardwrap">
 	{% if genre %}
 		{% set i = -1 %}

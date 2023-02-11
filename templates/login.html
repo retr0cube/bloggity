@@ -12,19 +12,20 @@
 <body>
 	<header>
 		<a href="/" class="logo_link"><img src="{{ url_for('static', filename='bloggity.png') }}" alt="Bloggity logo"></a>
-		<button onclick="toggleDark()" title="Basculer entre le mode sombre et le mode clair"><i id="dark-mode-ico" class="dark-mode-ico" class="fa-solid fa-moon"></i></button>
+		<button onclick="toggleDark()" title="Basculer entre le mode sombre et le mode clair"><i id="dark-mode-ico" class="fa-solid fa-moon"></i></button>
 	</header>
 	<form method="post" action="/login">
 		<h1>Bienvenue!</h1>
 		<p>Pour se connecter insérer votre code spécial:</p>
 		{% if failed%}
-		<h4 style="color: red;"><i class="fa-solid fa-circle-xmark"></i> Le code est incorrect!</h4>
+		<h4 style="color: red;" style="font-family: 'Rubik';"><i class="fa-solid fa-circle-xmark"></i> Le code est incorrect!</h4>
 		{% endif %}
-		<input type="text" name="pass" placeholder="******" maxlength="6" required>
+		<input type="text" id="pass" name="pass" placeholder="******" maxlength="6" required>
 		<button type="submit" onclick="loadingAnimation()" id="submitBtn" class="submitBtn">Continuer</button>
 	</form>
 	<footer>
-		<a class="retcy_logo"href="https://github.com/retr0cube"><img src="{{ url_for('static', filename='text848-6.png')}}" alt="Retcy logo"></a>
+		<a class="git_logo"href="https://github.com/retr0cube"><i class="fa-brands fa-github"></i></a>
+		<a class="facebook_logo"href="https://www.facebook.com/people/Bloggity/100090391530118/"><i class="fa-brands fa-facebook"></i></a>
 		<a href="/" class="info">Accueil</a>
 	</footer>
 </body>

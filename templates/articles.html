@@ -5,17 +5,18 @@
 {% block head %}
 <h1 align="center" class="title-p">Nos Articles</h1>
 <div class="wrapper">
-	<div class="postwrap">
 {% if articles and not articles == "[]" %}
 	{% for p in articles %}
 		{% if p.image %}
-		<a href="{{ url_for('article', id=p.id) }}" class="img_title"><img src="{{p.image}}" alt="Image d'article"></a>
-		{% endif %}
-		<div class="postcard">
-			<a class="title_a" href="{{ url_for('article', id=p.id) }}">{{ p.title }}</a>
-			<h2>par {{ p.author }} | {{ p.genre.title() }}</h2>
-			<p>{{ p.content[:200]+ "..." }}</p>
-		</div><br>
+		<div class="postwrap">
+			<a href="{{ url_for('article', id=p.id) }}" class="img_title"><img src="{{p.image}}" alt="Image d'article"></a>
+			{% endif %}
+			<div class="postcard">
+				<a class="title_a" href="{{ url_for('article', id=p.id) }}">{% if p.title | length > 30 %}{{ p.title[:30]+"..." }}{% else %}{{ p.title }}{% endif %}</a>
+				<h2>par {{ p.author }} | {{ genre[p.genre][2:].title() }}</h2>
+				<p>{{ p.content[:200]+ "..." }}</p>
+			</div><br>
+		</div>
 	{% endfor %}
 {% else %}
 	<div class="notf">
@@ -23,6 +24,5 @@
 		<p>Il n'y a pas de contenu pour le moment.</p>
 	</div>
 {% endif %}
-	</div>
 </div>
 {% endblock%}
