@@ -17,6 +17,12 @@ body {
   display: flex;
   flex-direction: column;
 }
+body ::-moz-selection {
+  background: #80b3ff;
+}
+body ::selection {
+  background: #80b3ff;
+}
 
 .dark-mode {
   background-color: #23282f;
@@ -326,7 +332,7 @@ form button:hover {
 
 .subwrapper {
   padding: 25px;
-  max-width: 70vw;
+  max-width: 75vw;
   margin-left: 1em;
   display: flex;
   flex-direction: column;
@@ -344,6 +350,9 @@ form button:hover {
   font-size: 2.5em;
   color: black;
 }
+.subwrapper .h2 {
+  display: none;
+}
 .subwrapper h2 {
   display: inline-flex;
   font-size: 1.5em;
@@ -351,15 +360,245 @@ form button:hover {
   font-family: "Rubik";
   font-style: italic;
 }
-.subwrapper h2 h2 {
-  display: none;
+.subwrapper div {
+  font-family: "PlayFair Display";
 }
-.subwrapper p {
+.subwrapper div p {
   margin-top: 1em;
   text-indent: 3em;
   word-spacing: 4px;
-  font-family: "PlayFair Display";
+}
+.subwrapper div p, .subwrapper div ul {
   font-size: 1.2em;
+}
+.subwrapper div a {
+  color: #0066ff;
+  text-decoration: none;
+}
+.subwrapper div a:visited {
+  color: #80b3ff;
+}
+.subwrapper div a:hover {
+  color: #80b3ff;
+}
+.subwrapper div a:focus {
+  outline: thin dotted;
+}
+.subwrapper div a:hover, .subwrapper div a:active {
+  outline: 0;
+}
+.subwrapper div p {
+  margin: 1em 0;
+}
+.subwrapper div img {
+  max-width: 100%;
+}
+.subwrapper div h1, .subwrapper div h2, .subwrapper div h3, .subwrapper div h4, .subwrapper div h5, .subwrapper div h6 {
+  font-weight: normal;
+  color: #111;
+  line-height: 1em;
+}
+.subwrapper div h4, .subwrapper div h5, .subwrapper div h6 {
+  font-weight: bold;
+}
+.subwrapper div h1 {
+  font-size: 2.5em;
+}
+.subwrapper div h2 {
+  font-size: 2em;
+}
+.subwrapper div h3 {
+  font-size: 1.5em;
+}
+.subwrapper div h4 {
+  font-size: 1.2em;
+}
+.subwrapper div h5 {
+  font-size: 1em;
+}
+.subwrapper div h6 {
+  font-size: 0.9em;
+}
+.subwrapper div blockquote {
+  color: #666666;
+  margin: 0;
+  padding-left: 3em;
+  border-left: 0.5em gray solid;
+}
+.subwrapper div hr {
+  display: block;
+  height: 2px;
+  border: 0;
+  border-top: 1px solid #aaa;
+  border-bottom: 1px solid #eee;
+  margin: 1em 0;
+  padding: 0;
+}
+.subwrapper div pre, .subwrapper div code, .subwrapper div kbd, .subwrapper div samp {
+  color: #000;
+  font-family: monospace, monospace;
+  _font-family: "courier new", monospace;
+  font-size: 0.98em;
+}
+.subwrapper div pre {
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+.subwrapper div b, .subwrapper div strong {
+  font-weight: bold;
+}
+.subwrapper div dfn {
+  font-style: italic;
+}
+.subwrapper div ins {
+  background: #ff9;
+  color: #000;
+  text-decoration: none;
+}
+.subwrapper div mark {
+  background: #ff0;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+.subwrapper div sub, .subwrapper div sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+.subwrapper div sup {
+  top: -0.5em;
+}
+.subwrapper div sub {
+  bottom: -0.25em;
+}
+.subwrapper div ul, .subwrapper div ol {
+  margin: 1em 0;
+  padding: 0 0 0 2em;
+}
+.subwrapper div li p:last-child {
+  margin: 0;
+}
+.subwrapper div dd {
+  margin: 0 0 0 2em;
+}
+.subwrapper div img {
+  border: 0;
+  -ms-interpolation-mode: bicubic;
+  vertical-align: middle;
+}
+.subwrapper div table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+.subwrapper div th {
+  border-bottom: 1px solid black;
+}
+.subwrapper div td {
+  vertical-align: top;
+}
+@media only screen and (min-width: 480px) {
+  .subwrapper div {
+    font-size: 14px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .subwrapper div {
+    font-size: 16px;
+  }
+}
+@media print {
+  .subwrapper div {
+    background: transparent;
+    color: black;
+    filter: none;
+    -ms-filter: none;
+  }
+  .subwrapper div a, .subwrapper div a:visited {
+    color: #0066ff;
+    text-decoration: underline;
+  }
+  .subwrapper div hr {
+    height: 1px;
+    border: 0;
+    border-bottom: 1px solid black;
+  }
+  .subwrapper div abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+  .subwrapper div .ir a:after, .subwrapper div a[href^="javascript:"]:after, .subwrapper div a[href^="#"]:after {
+    content: "";
+  }
+  .subwrapper div pre, .subwrapper div blockquote {
+    border: 1px solid #999;
+    padding-right: 1em;
+    page-break-inside: avoid;
+  }
+  .subwrapper div tr, .subwrapper div img {
+    page-break-inside: avoid;
+  }
+  .subwrapper div img {
+    max-width: 100%;
+  }
+  .subwrapper div p, .subwrapper div h2, .subwrapper div h3 {
+    orphans: 3;
+    widows: 3;
+  }
+  .subwrapper div h2, .subwrapper div h3 {
+    page-break-after: avoid;
+  }
+}
+
+.comments {
+  margin: 0 3em 4em;
+}
+.comments .title_com {
+  justify-content: flex-end;
+  align-items: center;
+  display: flex;
+}
+.comments .title_com h2 {
+  margin-right: auto;
+  font-family: "PlayFair Display";
+}
+.comments .title_com h2 i {
+  color: #0066ff;
+  margin-right: 0.5em;
+}
+.comments .title_com a {
+  display: flex;
+  text-decoration: none;
+  color: #0066ff;
+  font-family: "Rubik";
+}
+.comments .title_com a p {
+  margin-left: 0.5em;
+}
+.comments .title_com a:hover {
+  color: #80b3ff;
+}
+.comments form {
+  margin: 0;
+  margin-top: 0.5em;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  font-size: 1.4;
+  box-sizing: content-box;
+}
+.comments form input {
+  font-size: inherit;
+  text-align: unset;
+  padding-left: 30px;
+  width: 95%;
+}
+.comments form button {
+  padding: 10px;
+  margin-left: 0.5em;
 }
 
 .wrapper {
@@ -455,7 +694,7 @@ form button:hover {
   align-items: center;
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 810px) {
   header {
     padding: 20px 30px;
   }
@@ -552,6 +791,10 @@ form button:hover {
     width: 100%;
   }
 
+  .comments a p {
+    display: none;
+  }
+
   .post_wrapper {
     justify-content: center;
     flex-direction: column;
@@ -575,6 +818,9 @@ form button:hover {
     height: auto;
     border-radius: 0;
     margin-left: -25vw;
+  }
+  .post_wrapper .subwrapper .h2 {
+    display: initial;
   }
   .post_wrapper .subwrapper p {
     font-size: 1.3em;

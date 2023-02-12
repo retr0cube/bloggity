@@ -7,9 +7,11 @@
 <div class="wrapper">
 {% if articles and not articles == "[]" %}
 	{% for p in articles %}
-		{% if p.image %}
+		
 		<div class="postwrap">
-			<a href="{{ url_for('article', id=p.id) }}" class="img_title"><img src="{{p.image}}" alt="Image d'article"></a>
+			{% if p.image %}<a href="{{ url_for('article', id=p.id) }}" class="img_title"><img src="{{p.image}}" alt="Image d'article"></a>
+			{% else %}
+			<img src="{{ url_for('static', filename='rect155-6.png') }}" alt="No Image">
 			{% endif %}
 			<div class="postcard">
 				<a class="title_a" href="{{ url_for('article', id=p.id) }}">{% if p.title | length > 30 %}{{ p.title[:30]+"..." }}{% else %}{{ p.title }}{% endif %}</a>

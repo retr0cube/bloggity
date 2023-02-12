@@ -3,10 +3,9 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_admin import Admin, AdminIndexView, expose
 from flask_admin.contrib.sqla import ModelView
 from wtforms import TextAreaField
-# from flask_markdown import Markdown
+import mistune
 
 app = Flask(__name__)
-# Markdown(app)
 
 app.config['FLASK_ADMIN_SWATCH'] = "cerulean"
 app.config['SECRET_KEY'] = "retr0cube"
@@ -129,7 +128,8 @@ def articles():
 @app.route("/articles/<int:id>")
 def article(id):
     wpost = db.get_or_404(Posts, id)
-    return render_template("post.html", article=wpost, genre=inv_dict)
+    md_post = mistune.html(wpost.content)
+    return render_template("post.html", article=wpost, genre=inv_dict, md=md_post)
 
 
 @app.route("/articles/<p_genre>")

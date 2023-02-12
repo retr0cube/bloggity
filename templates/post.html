@@ -8,22 +8,36 @@
 		<p> {{ genre[article.genre].title() }}</p>
 		<div class="socializer" data-features="48px,opacity,icon-white,bg-none,pad" data-sites="facebook,twitter,reddit,email"></div>
 	</div>
-	<div class="subwrapper">
-		<h1>{{ article.title }}</h1>
-		<h2>par {{ article.author }}<h2>Sous {{ genre[article.genre].title() }}</h2></h2>
-		{% if article.image %}
-		<img src="{{article.image}}" alt="Image d'article">
-		{% endif %}
-		<p>{{ article.content }}</p>		
+	<div>
+		<div class="subwrapper">
+			<h1>{{ article.title }}</h1>
+			<h2>par {{ article.author }}</h2><h2 class="h2">Sous {{ genre[article.genre].title() }}</h2>
+			{% if article.image %}
+			<img src="{{article.image}}" alt="Image d'article">
+			{% else %}			
+			<img src="{{ url_for('static', filename='rect155-6.png') }}" alt="No Image">
+			{% endif %}
+			<div class="paragraph">{{ md|safe }}</div>
+		</div>
+		<div class="comments">
+			<div class="title_com">
+				<h2><i class="fa-solid fa-comments"></i>Commentaires</h2>
+				<a href="/comment_manage"><i class="fa-solid fa-sliders"></i><p>Supprimez/modifier un commentaire</p></a>
+			</div>
+			<form action="">
+				<input type="text" required minlength="4" maxlength="255" placeholder="Que pensez-vous?" required>
+				<button onclick="loadingAnimation()" >Publier</button>
+			</form>
+			<div>
+				{% if comments %}
+				{% else %}
+					<div class="notf">
+						<h1>¯\_(ツ)_/¯</h1>
+						<p>Il n'y a pas de contenu pour le moment.</p>
+					</div>
+				{% endif %}
+			</div>
+		</div>
 	</div>
 </div>
-<!-- <div class="comments">
-	<form action="">
-		<input type="text">
-		<button></button>
-	</form>
-	<div>
-		
-	</div>
-</div> -->
 {% endblock %}
