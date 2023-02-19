@@ -6,12 +6,24 @@
 <div class="post_wrapper">
 	<div class="share">
 		<p> {{ genre[article.genre].title() }}</p>
-		<div class="socializer" data-features="48px,opacity,icon-white,bg-none,pad" data-sites="facebook,twitter,reddit,email"></div>
+		<div class="socializer" data-features="48px,opacity,icon-white,bg-none,pad" data-sites="facebook,twitter,whatsapp,email"></div>
+		<div class="recommended">
+			<p>📚 Lisez plus</p>
+			{% for a in articles %}
+				{% if a.id != article.id%}
+				<div class="article">
+					<h3><a href="{{ url_for('article', id=a.id) }}">{{ a.title }}</a></h3>
+					<h4>Par {{ a.author }}</h4>
+					<p>{{ a.content[:100]+"..." }}<a href="{{ url_for('article', id=a.id) }}">Lire plus</a></p>
+				</div>
+				{%endif%}
+			{%endfor%}
+		</div>
 	</div>
 	<div>
 		<div class="subwrapper">
 			<h1>{{ article.title }}</h1>
-			<h2>par {{ article.author }}</h2><h2 class="h2">Sous {{ genre[article.genre].title() }}</h2>
+			<h2>Par <span>{{ article.author }}</span></h2><h2 class="h2">Sous <span>{{ genre[article.genre].title() }}</span></h2>
 			{% if article.image %}
 			<img src="{{article.image}}" alt="Image d'article">
 			{% else %}			

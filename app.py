@@ -129,7 +129,9 @@ def articles():
 def article(id):
     wpost = db.get_or_404(Posts, id)
     md_post = mistune.html(wpost.content)
-    return render_template("post.html", article=wpost, genre=inv_dict, md=md_post)
+    wposts = db.session.execute(
+    db.select(Posts).order_by(Posts.title)).scalars()
+    return render_template("post.html", article=wpost, articles=wposts, genre=inv_dict, md=md_post)
 
 
 @app.route("/articles/<p_genre>")

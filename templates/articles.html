@@ -16,7 +16,7 @@
 			<div class="postcard">
 				<a class="title_a" href="{{ url_for('article', id=p.id) }}">{% if p.title | length > 30 %}{{ p.title[:30]+"..." }}{% else %}{{ p.title }}{% endif %}</a>
 				<h2>par {{ p.author }} | {{ genre[p.genre][2:].title() }}</h2>
-				<p>{{ p.content[:200]+ "..." }}</p>
+				<p>{{ p.content[:200]+ "..." }}<a class="read" href="{{ url_for('article', id=p.id) }}">Lire plus</a></p>
 			</div><br>
 		</div>
 	{% endfor %}
