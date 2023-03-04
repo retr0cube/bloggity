@@ -1,0 +1,868 @@
+
+$main-color: hsl(216, 100%, 50%)
+$main-color-2: hsl(216, 100%, 75%)
+$secondary-color: hsl(215, 15%, 16%)
+
+*
+	padding: 0
+	margin: 0
+	box-sizing: border-box
+	transition: all 0.1s 0s linear
+
+p
+	text-align: justify
+html
+	height: 100%
+body 
+	min-height: 100%
+	display: flex
+	flex-direction: column
+
+	::-moz-selection 
+		background: $main-color-2
+
+	::selection 
+		background: $main-color-2
+
+.dark-mode
+	background-color: $secondary-color
+	.subwrapper div h1, .subwrapper div h2
+		color: white
+		display: inline-block
+		border-bottom: 4px dotted $main-color 
+	.subwrapper div h3, .subwrapper div h4, .subwrapper div h5, .subwrapper div h6
+		color: white
+	a, h1, h2, span, p, input, #dark-mode-ico, #menu-ico, li, h3, button
+		color: white
+	.wrapper .postcard .title_a
+		color: white
+	header
+		background-color: $secondary-color
+		img
+			filter: brightness(0) invert(1)
+		.toggled
+			ul
+				background-color: hsl(0, 0%, 20%)
+		button
+			background-color: hsl(0, 0%, 20%)
+			&:hover
+				background-color: hsl(0, 0%, 30%)
+	footer
+		background: none
+	form input
+		background-color: hsl(0, 0%, 20%)
+
+
+
+header
+	display: flex
+	justify-content: flex-end
+	user-select: none
+	z-index: 1
+	position: sticky
+	top: 0px
+	align-items: center
+	border-top: 5px solid $main-color
+	padding: 30px 50px
+	background-color: white
+	
+	.logo_link
+		margin-right: auto
+		img 
+			width: 8em
+
+	nav 
+		ul
+			display: flex
+			justify-content: space-around
+			list-style-type: none
+			font-family: 'PlayFair Display'
+			font-size: 1.1em
+			padding-right: 1.5em
+			.l1, .l2
+				padding-right: 2em
+			ul li
+				display: inline
+			border-right: 2px solid gray
+		a
+			text-decoration: none
+			color: black
+			border-bottom: 3px dotted $main-color
+			transition: ease .5s
+			&:hover
+				color: $main-color
+	.menuBtn
+		display: none
+	button
+		cursor: pointer
+		border: none 
+		padding: 10px
+		border-radius: 24px
+		width: 40px
+		margin-left: 1.5em
+		i
+			font-size: 1.4em
+		&:hover
+			background-color: hsl(0, 0%, 80%)
+
+footer 
+	display: flex
+	justify-content: flex-start
+	align-items: center
+	flex-wrap: wrap
+	align-content: flex-start
+	background-color: $secondary-color	
+	padding: 30px 50px 40px
+	flex: 1
+	border-top: 1px solid dimgray
+	.info
+		margin-left: auto
+		text-decoration: none
+		font-family: "Rubik"
+		color: gray
+		text-decoration-line: underline
+		transition: ease .5s
+		&:hover
+			color: lightgray
+	.git_logo, .facebook_logo
+		margin-right: .5em
+		font-size: 2em
+		i 
+			color: gray
+			vertical-align: text-bottom
+			&:hover
+				color: lightgray
+
+/* index */
+
+#icon
+	font-size: 2em
+	color: $main-color
+	padding-right: 15px
+
+.container
+	display: flex
+	flex-direction: column
+	padding: 0 80px
+	margin-bottom: 10vh
+	img
+		display: flex
+		width: 25em
+		align-self: center
+		margin: 2em 0
+	.edito 
+		h1
+			font-family: "PlayFair Display"
+			display: inline-block
+		p
+			line-height: 1.2em
+			span
+				font-family: "PlayFair Display"
+				color: $main-color
+				font-size: 2em
+			font-family: "Rubik"
+			text-indent: 1em
+			font-size: 1.25em
+			padding: 10px 0
+			code
+				font-family: "PlayFair Display" 
+				float: right
+				color: $main-color
+				font-style: italic
+	.genres
+		font-family: "Rubik"
+		.title
+			font-family: "PlayFair Display"
+			display: inline-block
+			margin-bottom: 10px
+		.cardwrap
+			user-select: none
+			display: flex
+			flex-flow: row wrap
+
+		.genre_card
+			display: inline-flex
+			font-size: 1em
+			justify-content: flex-end
+			padding: 15px 25px 
+			margin: 15px 10px 0 0
+			border: 1px solid gray
+			border-radius: 50px
+			a
+				text-decoration: none
+				font-size: 1.5em
+				margin-left: 1em
+				i
+					vertical-align: text-bottom
+					color: $main-color
+					&:hover
+						color: $main-color-2
+
+
+.notf
+	font-family: "Rubik"
+	display: flex
+	flex-direction: column
+	align-items: center
+	font-size: 1.1em
+	width: 100%
+	h1
+		color: $main-color
+
+/* 404 */
+
+.oops 
+	height: 50vh
+	display: flex
+	align-items: center
+	flex-direction: column
+	justify-content: center
+	font-family: "Rubik"
+	font-size: 1.4em
+	h1
+		font-family: "PlayFair Display"
+		font-size: 4em
+		letter-spacing: 15px
+		margin-bottom: 20px
+	p
+		text-align: center
+	a
+		text-decoration: none
+		border-bottom: 2px dotted $main-color
+		color: $main-color
+		font-size: .9em
+		margin-top: 10px
+		&:hover
+			border-bottom-style: solid
+
+.schoolprojects
+	margin-top: 1.7em
+	h1
+		font-family: "PlayFair Display"
+		display: inline-block
+	.imgwrap
+		user-select: none
+		display: flex
+		flex-flow: row wrap	
+		img, video
+			border-radius: 12px
+			padding-right: 10px
+
+/* login */
+
+
+form
+	display: flex
+	flex-direction: column
+	justify-content: center
+	align-items: center
+	margin-top: 15vh
+	margin-bottom: 20vh
+	h1     
+		font-family: "Rubik"
+		color: $main-color
+		font-size: 2em
+	p 
+		text-align: center
+		font-family: "PlayFair Display"	
+		font-size: 1.3em
+	input
+		margin: .5em 0
+		color: $secondary-color
+		border: none
+		font-family: "Fira Code", monospace
+		border-radius: 24px
+		padding: 10px
+		text-align: center 
+		background-color: hsl(0, 0%, 90%)
+		width: 4em
+		font-size: 3em
+	button
+		padding: 5px 10px
+		font-family: "Rubik"
+		background-color: $main-color
+		border: none
+		color: white
+		font-size: 1.3em
+		border-radius: 24px
+		cursor: pointer
+		&:hover
+			background-color: hsl(216, 100%, 60%)
+
+.post_wrapper
+	display: flex
+	.share
+		max-width: 25vw
+		.recommended
+			.article
+				border-radius: 12px
+				margin-bottom: 10px
+				border: 1px solid $main-color-2
+				padding: 10px
+				font-family: "Rubik"
+				h3 a
+					text-decoration: none
+					color: white
+					display: inline-block
+					margin-bottom: 6px
+					border-bottom: 3px dotted $main-color-2
+					&:hover
+						color: $main-color-2
+				h4
+					font-style: italic
+					font-size: "PlayFair Display"
+					color: $main-color-2
+				p
+					font-size: 1em
+					a
+						color: $main-color-2
+						&:hover
+							color: white
+		p
+			font-family: "Rubik"
+			font-style: italic
+			color: white
+			font-size: 1.4em
+			margin: 10px 0
+		padding: 30px 30px 0 25px
+		border-top-right-radius: 24px
+		background-color: $main-color
+.subwrapper
+	padding: 25px
+	max-width: 75vw
+	margin-left: 1em
+	display: flex
+	flex-direction: column
+	align-items: center
+
+	img
+		border-radius: 12px
+		margin-top: 2em
+		margin-bottom: 1.5em
+		width: 45vw
+		height: 400px
+	h1
+		font-family: "PlayFair Display"
+		font-size: 2.5em
+	span
+		color: $main-color
+		font-family: "PlayFair Display"
+	.h2
+		display: none
+	h2
+		font-size: 1.2em
+		color:  $main-color
+		font-family: "Rubik"
+		font-style: italic
+	
+	div	
+		font-family: "PlayFair Display"
+		p
+			margin-top: 1em
+			text-indent: 3em
+			word-spacing: 4px
+		p,ul	
+			font-size: 1.2em
+		a 
+			color: $main-color
+			text-decoration: none
+			&:visited 
+				color: $main-color-2
+			
+			&:hover 
+				color: $main-color-2
+
+			&:focus 
+				outline: thin dotted
+			
+			&:hover, &:active 
+				outline: 0
+		
+		p 
+			margin: 1em 0
+
+		img 
+			width: 35vw
+			margin: 0
+			height: 300px
+
+		h1, h2, h3, h4, h5, h6 
+			font-weight: normal
+			color: #111
+			margin-top: .5em
+		h4, h5, h6 
+			font-weight: bold
+
+		h1 
+			font-size: 2.5em
+
+		h2 
+			font-size: 2em
+
+		h3 
+			font-size: 1.5em
+
+		h4 
+			font-size: 1.2em
+
+		h5 
+			font-size: 1em
+
+		h6 
+			font-size: 0.9em
+
+		blockquote 
+			color: #666666
+			margin: 0
+			padding-left: 3em
+			border-left: 0.5em gray solid
+
+		hr 
+			display: block
+			height: 2px
+			border: 0
+			border-top: 1px solid #aaa
+			border-bottom: 1px solid #eee
+			margin: 1em 0
+			padding: 0
+
+		pre, code, kbd, samp 
+			color: #000
+			font-family: monospace, monospace
+			_font-family: 'courier new', monospace
+			font-size: 0.98em
+
+		pre 
+			white-space: pre
+			white-space: pre-wrap
+			word-wrap: break-word
+
+		b, strong 
+			font-weight: bold
+
+		dfn 
+			font-style: italic
+
+		ins 
+			background: #ff9
+			color: #000
+			text-decoration: none
+
+		mark 
+			background: #ff0
+			color: #000
+			font-style: italic
+			font-weight: bold
+
+		sub, sup 
+			font-size: 75%
+			line-height: 0
+			position: relative
+			vertical-align: baseline
+
+		sup 
+			top: -0.5em
+
+		sub 
+			bottom: -0.25em
+
+		ul, ol 
+			margin: 1em 0
+			padding: 0 0 0 2em
+
+		li p:last-child 
+			margin: 0
+
+		dd 
+			margin: 0 0 0 2em
+
+		table 
+			border-collapse: collapse
+			border-spacing: 0
+			width: 100%
+
+		th 
+			border-bottom: 1px solid black
+
+		td 
+			vertical-align: top
+		em 
+			border-bottom: 2px dotted $main-color
+
+		@media only screen and (min-width: 480px) 
+			font-size: 14px
+
+		@media only screen and (min-width: 768px) 
+			font-size: 16px
+
+		@media print 
+			background: transparent 
+			color: black 
+			filter: none 
+			-ms-filter: none 
+
+			a, a:visited
+				color: $main-color 
+				text-decoration: underline
+
+			hr 
+				height: 1px
+				border: 0
+				border-bottom: 1px solid black
+
+			abbr[title]:after 
+				content: " (" attr(title) ")"
+
+			.ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after 
+				content: ""
+
+			pre, blockquote 
+				border: 1px solid #999
+				padding-right: 1em
+				page-break-inside: avoid
+
+			tr
+				page-break-inside: avoid
+
+			img 
+				max-width: 100% 
+
+			p, h2, h3 
+				orphans: 3
+				widows: 3
+
+			h2, h3 
+				page-break-after: avoid
+
+.comments
+	margin: 0 3em 4em
+	.comment
+		margin-top: 1em
+		border-radius: 12px
+		div
+			margin-bottom: 10px
+			padding: .5em
+			border-radius: 12px
+			border: 1px solid lightgray
+			div
+				border: unset
+				margin: 0
+				font-family: "Rubik"
+				color: $main-color
+				display: flex
+				i 
+					margin-right: 10px
+				h3
+					color: black
+				.seperator
+					color: $main-color
+					margin: 0 5px
+					font-style: bolder
+			
+			p
+				margin-left: 1em
+				text-indent: 1em
+				font-family: "PlayFair Display"
+	.title_com
+		h2
+			i
+				color: $main-color
+				margin-right: .5em
+			margin-right: auto
+			font-family: "PlayFair Display"
+		a
+			display: flex
+			text-decoration: none
+			color: $main-color
+			font-family: "Rubik"
+			p 
+				margin-left: .5em
+			&:hover
+				color: $main-color-2
+		justify-content: flex-end
+		align-items: center 
+		display: flex
+	form
+		margin: 0
+		margin-top: .5em
+		padding: 0
+		display: flex
+		align-items: center
+		flex-direction: column
+		font-size: 1.4
+		box-sizing: content-box
+		div
+			display: flex
+			input:not(last-child)
+				margin-right: 1em
+				width: 100%
+		input
+			font-size: inherit
+			text-align: unset
+			padding-left: 30px
+			width: 95%
+		button
+			padding: 10px
+			margin-left: .5em
+
+
+.wrapper
+	margin: 0em 6em 4em
+	padding: 25px
+	display: flex
+	flex-direction: column
+	justify-content: center
+	align-items: center
+
+	.postwrap
+		display: flex
+		align-items: center
+		padding: 2em 0
+		border-bottom: 1px solid lightgray
+	.img_title
+		border: none
+		margin-right: 1em
+		img
+			border-radius: 8px
+			height: 130px
+			width: 200px
+			&:hover
+				filter: brightness(50%)
+	.postwrap:last-child
+		border-bottom: unset
+	.postcard
+		.title_a
+			color: black
+			text-decoration: none
+			border-bottom: 7px dotted $main-color
+			font-family: "PlayFair Display"
+			font-size: 1.7em
+			margin-right: 10px
+			&:hover
+				color: $main-color
+		h2 
+			display: flex
+			font-size: 1.1em
+			margin: 9px 0
+			color:  $main-color
+			font-family: "Rubik"
+			font-style: italic
+		p
+			a
+				text-decoration: underline
+				color: $main-color
+				&:hover
+					color: $main-color-2
+			text-indent: 1em
+			font-family: "PlayFair Display"
+			font-size: 1.1em
+
+.title-p
+	font-family: "Rubik"
+	margin-bottom: 1em
+	color: $main-color
+
+.title-c
+	font-family: "Rubik"
+	color: $main-color
+	margin-bottom: 1em
+.team
+	border: .5px solid gray
+	padding: 20px
+	border-radius: 24px
+	margin: 0 30vw 5vh
+	display: flex
+	align-items: center
+	justify-content: center
+	flex-direction: column
+	p, ul 
+		margin-bottom: 15px
+		font-family: "Rubik"
+		font-size: 1.1em
+
+	h3 
+		font-family: "PlayFair Display"
+		font-style: italic
+		font-size: 1.5em
+		text-align: center
+		margin-bottom: 15px
+	ul
+		list-style-type: none
+		display: flex
+		flex-direction: column
+		align-items: center 
+
+.bloopers, .images, .videos
+	display: flex
+	flex-direction: column
+	padding: 0 80px
+	font-family: "PlayFair Display"
+	margin-bottom: 4vh
+	h1
+		font-size: 2em
+	h2
+		font-family: "Rubik"
+		font-style: italic
+		margin-top: 10px 
+		i
+			margin-left: 1em
+	i 
+		color: $main-color
+		margin-right: .5em
+	.firstwrap
+		padding: 10px
+		margin-bottom: 10px
+		user-select: none
+		display: flex
+		flex-flow: row wrap 
+		.wrap
+			padding: 10px
+			border: 1px solid lightgray
+			margin: 10px
+			border-radius: 12px
+		h3
+			margin-bottom: .5em
+		.mediawrap img
+				max-width: 100px 
+
+.schoolprojects
+	display: flex
+	flex-direction: column
+	font-family: "PlayFair Display"
+	h1
+		font-size: 2em
+		font-family: "Rubik"
+	h3
+		text-indent: 1em
+		font-style: italic
+		margin-top: 10px 
+	#icon
+		font-size: 1em
+	div .mediawrap 
+		margin-top: 1em
+		border: 1px solid lightgray
+		padding: 20px
+		border-radius: 12px
+.bloopers div .wrap .mediawrap img
+	max-width: 100px
+.schoolprojects div .mediawrap img
+	max-width: 320px
+
+@media only screen and (max-width: 810px)
+	header
+		padding: 30px 30px
+		.logo_link img
+			width: 6em
+		nav 
+			position: fixed
+			pointer-events: none
+			top: 83.25px
+			right: 0
+			opacity: 0
+			ul
+				display: flex
+				justify-content: center
+				padding: 15px 0 25px 0
+				margin: 0
+				width: 100vw
+				border: none
+				a
+					opacity: 0
+					font-size: .9em
+		.toggled
+			position: fixed
+			pointer-events: auto
+			top: 105.52px
+			right: 0
+			opacity: 1 
+			ul
+				display: flex
+				justify-content: center
+				background-color: hsl(0, 0%, 90%)
+				padding: 15px 0 25px 0
+				margin: 0
+				width: 100vw
+				border: none
+				a
+					opacity: 1
+					font-size: .9em
+		.menuBtn
+			display: flex
+
+	.container
+		margin-top: 1vh
+		padding: 0 40px
+		.edito p
+				font-size: 1.2em
+		.genres
+			margin-top: 10px
+			.title
+				font-size: 1.5em
+			div p
+				font-size: 1em
+			.cardwrap
+				flex-wrap: unset
+				flex-direction: column
+				a
+					margin-left: auto
+	.wrapper
+		justify-content: center
+		flex-direction: column
+		margin: 0 5vw 5em
+		.postwrap
+			margin: 0
+			display: flow-root
+			h2
+				margin-top: .7em
+			img
+				height: 200px
+				width: 100%
+	.comments
+		a
+			p
+				display: none
+	.post_wrapper
+		justify-content: center
+		flex-direction: column
+		margin: 0
+		.share
+			max-width: 100%
+			padding: 10px 30px
+			.recommended
+				display: none
+			p
+				display: none
+			display: flex
+			justify-content: center
+			border-top-right-radius: unset
+		.subwrapper
+			max-width: 100vw
+			align-items: unset
+			padding: 10px
+			h1
+				margin-top: 1em
+			img
+				width: 114.5vw
+				height: auto
+				border-radius: 0
+				margin-left:-21vw
+			.h2
+				display: initial
+			p
+				font-size: 1.3em
+			div
+				img
+					width: 100vw
+					height: auto
+					border-radius: 0
+					margin-left:-22vw
+	form
+		margin-top: 20vh
+
+	.team
+		margin: 0 10vw 5vh
+	.images, .videos, .bloopers
+		padding: 0 30px
+	.schoolprojects
+		img, video
+			width: 270px

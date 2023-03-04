@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Modifier Un commentaire - Bloggity{% endblock%}
+
+{% block head %}
+<div class="commentmanage">
+	<div>
+		<form action="">
+			<input type="email" name="email" required placeholder="Insérer votre email">
+			<button>Afficher vos commentaires</button>
+		</form>
+	</div>
+	<div class="user_comments">
+		{% if comments %}
+			{% for c in comments %}
+				<div>
+					<p></p>
+					<form action="">
+						<button><i class="fa-regular fa-trash-can"></i>Supprimer</button>
+						<button><i class="fa-solid fa-pen"></i>Modifier</button>
+					</form>
+				</div>
+			{% endfor %}
+		{% else %}
+		<div class="notf">
+			<h1>¯\_(ツ)_/¯</h1>
+			<p>Il n'y a pas de contenu pour le moment.</p>
+		</div>
+		{% endif %}
+	</div>
+</div>
+{% endblock%}

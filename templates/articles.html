@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Articles - Bloggity{% endblock%}
+
+{% block head %}
+<h1 align="center" class="title-p">Nos Articles</h1>
+<div class="wrapper">
+{% if articles and not articles == "[]" %}
+	{% for p in articles %}
+		
+		<div class="postwrap">
+			{% if p.image %}<a href="{{ url_for('article', id=p.id) }}" class="img_title"><img src="{{p.image}}" alt="Image d'article"></a>
+			{% else %}
+			<img src="{{ url_for('static', filename='rect155-6.png') }}" alt="No Image">
+			{% endif %}
+			<div class="postcard">
+				<a class="title_a" href="{{ url_for('article', id=p.id) }}">{{ p.title }}</a>
+				<h2>par {{ p.author }} | {{ genre[p.genre][2:].title() }}</h2>
+				<p>{{ p.content[:200]+ "..." }}<a class="read" href="{{ url_for('article', id=p.id) }}">Lire plus</a></p>
+			</div><br>
+		</div>
+	{% endfor %}
+{% else %}
+	<div class="notf">
+		<h1>¯\_(ツ)_/¯</h1>
+		<p>Il n'y a pas de contenu pour le moment.</p>
+	</div>
+{% endif %}
+</div>
+{% endblock%}

@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+
+{% block title %}Multimédia - Bloggity{% endblock%}
+
+{% block head %}
+<div class="images">
+	<h1><i class="fa-regular fa-images"></i>Images</h1>
+	<h2><i class="fa-solid fa-vial"></i>Explorez nos talents</h2>
+	<p style="text-indent: 1em;">Beaucoup de nos camarades sont doués pour le dessin, la photographie, la programmation, le chant, la danse, le design, le montage ...
+Nous avons choisi de partager avec vous ces quelques exemples:</p>
+	<div class="firstwrap">
+	{% if talents %}
+		{% for t in talents%}
+			<div class="wrap">
+				<h3><i class="fa-solid fa-compass-drafting"></i> {{mistune.html(t.description)|safe}}</h3>
+				<div class="mediawrap">
+					{% for i in os.listdir("./static"+t.content)%}
+					{% if i.endswith(".mp4") %}
+					 <video width="320" height="240" controls>
+					  <source src="{{ url_for('static', filename=t.content[1:]+'/'+i) }}" type="video/mp4">
+					</video> 
+					{% else %}
+					<img src="{{ url_for('static', filename=t.content[1:]+'/'+i) }}">
+					{% endif %}
+					{%endfor%}
+				</div>
+			</div>
+		{%endfor%}
+	{% else %}
+	<div class="notf">
+		<h1>¯\_(ツ)_/¯</h1>
+		<p>Il n'y a pas de contenu pour le moment.</p>
+	</div>	
+	{% endif %}
+</div>
+</div>
+<div class="videos">
+	<h1><i class="fa-solid fa-clapperboard"></i>Vidéos</h1>
+	<h2><i class="fa-solid fa-school"></i>Découvrez notre établissement</h2>
+	{% if discover %}
+	<div>
+		{% for d in discover%}
+			<div class="wrap">
+				<div class="mediawrap">
+					{% for i in os.listdir("./static"+d.content)%}
+					{% if i.endswith((".mp4",".mov"))  %}
+					 <video width="320" height="240" controls>
+					  <source src="{{ url_for('static', filename=d.content[1:]+'/'+i) }}" type="video/mp4">
+					</video> 
+					{% else %}
+					<img src="{{ url_for('static', filename=d.content[1:]+'/'+i) }}">
+					{% endif %}
+					{%endfor%}
+				</div>
+			</div>
+		{%endfor%}		
+	</div>
+	{% else %}
+	<div class="notf">
+		<h1>¯\_(ツ)_/¯</h1>
+		<p>Il n'y a pas de contenu pour le moment.</p>
+	</div>	
+	{% endif %}
+	<h2><i class="fa-solid fa-graduation-cap"></i>École et débouchés</h2>
+	{% if schoolstuff %}
+	<div>
+		{% for s in schoolstuff%}
+			<div class="wrap">
+				<div class="mediawrap">
+					{% for i in os.listdir("./static"+s.content)%}
+					{% if i.endswith(".mp4") %}
+					 <video width="320" height="240" controls>
+					  <source src="{{ url_for('static', filename=s.content[1:]+'/'+i) }}" type="video/mp4">
+					</video> 
+					{% else %}
+					<img src="{{ url_for('static', filename=s.content[1:]+'/'+i) }}">
+					{% endif %}
+					{%endfor%}
+					<h3><i class="fa-solid fa-notes"></i> {{mistune.html(s.description)|safe}}</h3>
+				</div>
+			</div>
+		{%endfor%}		
+	</div>
+	{% else %}
+	<div class="notf">
+		<h1>¯\_(ツ)_/¯</h1>
+		<p>Il n'y a pas de contenu pour le moment.</p>
+	</div>	
+	{% endif %}
+
+</div>
+<div class="bloopers">
+	<h1><i class="fa-solid fa-face-laugh-squint"></i>Coulisses</h1>
+	{% if bloopers %}
+	<div>
+		<div class="wrap">
+		{% for b in bloopers%}
+				<div class="mediawrap">
+					{% for i in os.listdir("./static"+b.content)%}
+					{% if i.endswith(".mp4") %}
+					 <video width="320" height="240" controls>
+					  <source src="{{ url_for('static', filename=b.content[1:]+'/'+i) }}" type="video/mp4">
+					</video> 
+					{% else %}
+					<img src="{{ url_for('static', filename=b.content[1:]+'/'+i) }}">
+					{% endif %}
+					{%endfor%}
+				</div>
+		{%endfor%}	
+		</div>	
+	</div>
+	{% else %}
+	<div class="notf">
+		<h1>¯\_(ツ)_/¯</h1>
+		<p>Il n'y a pas de contenu pour le moment.</p>
+	</div>	
+	{% endif %}
+	
+</div>
+{% endblock%}

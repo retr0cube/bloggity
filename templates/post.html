@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}{{ article.title }} - Bloggity{% endblock%}
+
+{% block head %}
+<div class="post_wrapper">
+	<div class="share">
+		<p>Sous {{ genre[article.genre].title() }}</p>
+		<div class="socializer" data-features="48px,opacity,icon-white,bg-none,pad" data-sites="facebook,twitter,whatsapp,email"></div>
+		<div class="recommended">
+			<p>📚 Lisez plus</p>
+			{% for a in articles %}
+				{% if a.id != article.id%}
+				<div class="article">
+					<h3><a href="{{ url_for('article', id=a.id) }}">{{ a.title }}</a></h3>
+					<h4>Par {{ a.author }}</h4>
+					<p>{{ a.content[:100]+"..." }}<a href="{{ url_for('article', id=a.id) }}">Lire plus</a></p>
+				</div>
+				{%endif%}
+			{%endfor%}
+		</div>
+	</div>
+	<div>
+		<div class="subwrapper">
+			<h1>{{ article.title }}</h1>
+			<h2>Par <span>{{ article.author }}</span></h2><h2 class="h2">Sous <span>{{ genre[article.genre].title() }}</span></h2>
+			{% if article.image %}
+			<img src="{{article.image}}" alt="Image d'article">
+			{% else %}
+			<img src="{{ url_for('static', filename='rect155-6.png') }}" alt="No Image">
+			{% endif %}
+			<div class="paragraph">{{ md|safe }}</div>
+		</div>
+		<div class="comments">
+			<div class="title_com">
+				<h2><i class="fa-solid fa-comments"></i>Commentaires</h2>
+				<a href="/comment_manage"><i class="fa-solid fa-sliders"></i><p>Supprimez/modifier un commentaire</p></a>
+			</div>
+			<form method="post" action="/comments/{{ article.id }}">
+				<div>
+				<input type="text" required minlength="4" maxlength="30" name="name" placeholder="Votre nom" required>
+				<input type="text" required minlength="10" maxlength="50" name="email" placeholder="Votre E-mail" required>			
+				</div>
+				<div>
+				<input type="text" required minlength="4" maxlength="255" name="content" placeholder="Que pensez-vous?" required>
+				<button onclick="cmtLoadingAnimation()" id="publish">Publier</button>
+				</div>
+			</form>
+			{% if comments %}
+			<div class="comment">
+					{% for c in comments %}
+					<div>
+						<div><i class="fa-solid fa-user"></i><h3>{{c.user}}</h3><h3 class="seperator">⋅</h3><h3>Visiteur</h3></div>
+						<p>{{c.content}}</p>
+					</div>
+					{% endfor %}
+			</div>
+			{% else %}
+				<div class="notf">
+					<h1>¯\_(ツ)_/¯</h1>
+					<p>Il n'y a pas de contenu pour le moment.</p>
+				</div>
+			{% endif %}
+		</div>
+	</div>
+</div>
+{% endblock %}
