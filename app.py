@@ -2,7 +2,6 @@ from flask import Flask, url_for, render_template, request, redirect, session, a
 from flask_sqlalchemy import SQLAlchemy
 from flask_admin import Admin, AdminIndexView, expose
 from flask_admin.contrib.sqla import ModelView
-from flask_migrate import Migrate
 from wtforms import TextAreaField
 from sqlalchemy import func
 import mistune
@@ -16,7 +15,6 @@ app.config['SECRET_KEY'] = "retr0cube"
 app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://bloggitydb_user:ilYZa40ILv1FP4IvzGYhZjer9CHCVwF1@dpg-cfb88i1gp3jsh69mvau0-a.frankfurt-postgres.render.com/bloggitydb"
 
 db = SQLAlchemy()
-migrate = Migrate(app, db)
 
 @app.context_processor
 def add_imports():
